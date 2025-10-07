@@ -1,0 +1,9 @@
+.navbar-anchor {
+  color: white;                 /* default white */
+  text-decoration: none;        /* no underline */
+  transition: color 0.3s ease;  /* smooth hover effect */
+}
+
+.navbar-anchor:hover {
+  color: #d1d5db; /* Tailwind's gray-300 */
+}
