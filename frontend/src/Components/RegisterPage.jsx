@@ -13,8 +13,8 @@ const RegisterPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [uniqueId, setUniqueId] = useState(""); // store uniqueId to show user
   const [paidEmail, setPaidEmail] = useState("");
-  const paymentUrl = `http://localhost:5173/expire?uniqueId=${uniqueId}`;
-
+  const paymentUrl = `/expire?uniqueId=${uniqueId}`;
+//  const paymentUrl = `http://localhost:3000/expire?uniqueId=${uniqueId}`;
   // Payment validation schema (matching backend exactly)
   const paymentValidationSchema = {
     name: {
@@ -105,7 +105,7 @@ const RegisterPage = () => {
     setIsProcessing(true);
 
     try {
-      const { data } = await axios.post("http://localhost:3000/payment/pay", {
+      const { data } = await axios.post("/payment/pay", {
         name: formData.name,
         email: formData.email,
         contact: formData.contact
@@ -128,7 +128,7 @@ const RegisterPage = () => {
       handler: async function (response) {
   try {
     // Verify payment on backend
-    await axios.post("http://localhost:3000/payment/verifyPayment", {
+    await axios.post("/payment/verifyPayment", {
       razorpay_order_id: response.razorpay_order_id,
       razorpay_payment_id: response.razorpay_payment_id,
       razorpay_signature: response.razorpay_signature,

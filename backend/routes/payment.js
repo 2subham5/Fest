@@ -161,7 +161,7 @@ router.post("/verifyPayment", async (req, res) => {
 router.post("/send-whatsapp", async (req, res) => {
   const { contact, uniqueId } = req.body;
 
-  const paymentUrl = `http://localhost:5173/expire?uniqueId=${uniqueId}`;
+  const paymentUrl = `/expire?uniqueId=${uniqueId}`;
 
   try {
     const response = await axios.post(

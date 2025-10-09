@@ -9,7 +9,7 @@ const StarfieldBackground = () => {
   useEffect(() => {
     const generateStars = () => {
       const newStars = [];
-      const starCount = 150;
+      const starCount = 30;
       
       for (let i = 0; i < starCount; i++) {
         newStars.push({

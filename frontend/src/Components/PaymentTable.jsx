@@ -12,7 +12,7 @@ const PaymentTable = () => {
   const fetchPayments = async () => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get("http://localhost:3000/user/all", {
+      const { data } = await axios.get("/user/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
