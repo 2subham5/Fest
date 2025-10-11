@@ -18,8 +18,7 @@ const ExpirePayment = () => {
     const expirePass = async () => {
       try {
         const token = localStorage.getItem("token"); // admin JWT
-        const { data } = await axios.post(
-          `http://localhost:3000/user/expire?uniqueId=${uniqueId}`,
+        const { data } = await axios.post(`/user/expire?uniqueId=${uniqueId}`,
           {}, // empty body
           { headers: { Authorization: `Bearer ${token}` } }
         );

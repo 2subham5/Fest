@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../css/Event.css";
 const EventHighlights = () => {
   const events = [
     {
@@ -29,32 +29,65 @@ const EventHighlights = () => {
     }
   ];
 
+  const handleClick = (event) => {
+    console.log("Clicked:", event.title);
+    // Navigation logic here
+    alert(`Navigating to ${event.title} page`);
+  };
+
   return (
     <section className="relative py-16">
       {/* Background gradient */}
       <div className="absolute inset-0  pointer-events-none" />
+ 
       
-      <div className="relative z-10">
-        <h2 className="text-white text-4xl font-bold tracking-tighter text-center mb-10">
+      <div className="relative z-10 container mx-auto px-4">
+        <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tighter text-center mb-10">
           Event Highlights
         </h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-6">
+        {/* Grid layout for small/medium, horizontal scroll for large */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-6">
           {events.map((event) => (
             <div
               key={event.id}
-              className="group relative flex flex-col gap-3 rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300"
+              onClick={() => handleClick(event)}
+              className="group relative rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer aspect-square md:h-80 md:aspect-auto"
             >
-              <div
-                className="w-full h-64 bg-center bg-no-repeat bg-cover"
-                style={{ backgroundImage: `url("${event.image}")` }}
-              ></div>
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
               <p className="absolute bottom-4 left-4 text-white text-xl font-bold">
                 {event.title}
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Horizontal scroll for large screens */}
+        <div className="hidden lg:block overflow-x-scroll scrollbar-hide-lg">
+          <div className="flex gap-6">
+            {events.map((event) => (
+              <div
+                key={event.id}
+                onClick={() => handleClick(event)}
+                className="group relative flex-shrink-0 w-64 rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer"
+              >
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <p className="absolute bottom-4 left-4 text-white text-xl font-bold">
+                  {event.title}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

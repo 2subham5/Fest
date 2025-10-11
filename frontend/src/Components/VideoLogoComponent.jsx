@@ -61,7 +61,7 @@ const VideoLogoComponent = () => {
           #UNMASK THE NIGHTS
         </p>
         <p className="text-2xl md:text-3xl font-bold text-white">
-          19TH - 23RD FEB
+          26TH - 29TH NOV
         </p>
       </div>
 
@@ -76,7 +76,7 @@ const VideoLogoComponent = () => {
           </svg>
           CODE OF CONDUCT
         </a>
-        <a
+        {/* <a
           href="/merchandise"
           className="text-purple-300 hover:text-white font-semibold text-lg hover:underline hover:underline-offset-4 transition-all duration-300 flex items-center gap-2"
         >
@@ -84,7 +84,7 @@ const VideoLogoComponent = () => {
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V7l-7-5z" clipRule="evenodd" />
           </svg>
-        </a>
+        </a> */}
       </div>
 
       {/* Social Media Icons */}
