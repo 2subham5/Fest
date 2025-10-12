@@ -20,7 +20,7 @@ const AboutEterniaLogo = () => {
               
               
               {/* Replace this placeholder with your actual logo: */}
-              <img src="/centre-logo.png" alt="ETERNIA Logo" className="w-80 h-80 object-contain" />
+              <img src="/eternia.png" alt="ETERNIA Logo" className="w-80 h-80 object-contain" />
             </div>
           </div>
 

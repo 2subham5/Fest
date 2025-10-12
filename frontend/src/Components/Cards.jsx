@@ -12,13 +12,15 @@ const Cards = () => {
       title: "Opening Ceremony",
       description: "The grand opening with spectacular performances",
       size: "large", // large, medium, small
+      src : "/card2.jpg",
       delay: 100
     },
     {
       id: 2,
-      title: "Cultural Dance",
-      description: "Traditional dance performances",
+      title: "Music",
+      description: "Performances",
       size: "medium",
+      src : "/card3.jpg",
       delay: 200
     },
     {
@@ -26,27 +28,31 @@ const Cards = () => {
       title: "Music Concert",
       description: "Electrifying musical performances",
       size: "medium",
+      src : "/card9.jpg",
       delay: 300
     },
     {
       id: 4,
       title: "Art Exhibition",
-      description: "Creative artworks on display",
+      description: "Symphony on display",
       size: "large",
+      src : "/card10.jpg",
       delay: 400
     },
     {
       id: 5,
-      title: "Food Festival",
-      description: "Delicious cuisine from around the world",
-      size: "small",
+      title: "Moments",
+      description: "Feel Good moments",
+      size: "medium",
+      src : "/card1.jpg",
       delay: 500
     },
     {
       id: 6,
       title: "Stage Performance",
-      description: "Drama and theatrical shows",
+      description: "Music, crowd and all",
       size: "medium",
+      src : "/card8.jpg",
       delay: 600
     },
     {
@@ -54,6 +60,7 @@ const Cards = () => {
       title: "Crowd Moments",
       description: "Audience enjoying the festivities",
       size: "small",
+      src : "/card5.jpg",
       delay: 700
     }
   ];
@@ -135,16 +142,16 @@ const Cards = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-400/30 via-blue-500/30 to-purple-600/30" />
               
               {/* Placeholder pattern */}
-              <div className="absolute inset-0 opacity-20">
+              {/* <div className="absolute inset-0 opacity-20">
                 <div className="w-full h-full bg-gradient-to-br from-white/5 via-transparent to-white/10" />
-              </div>
+              </div> */}
 
               {/* Replace above placeholders with actual images: */}
-              {/* <img 
+              <img 
                 src={image.src} 
                 alt={image.title}
                 className="absolute inset-0 w-full h-full object-cover"
-              /> */}
+              />
 
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

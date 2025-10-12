@@ -10,7 +10,7 @@ const Navbar = () => {
         
         {/* Left side: Logos */}
         <div className="flex items-center gap-4">
-          <img src="/logo1.jpg" alt="Logo 1" className="h-10 w-auto" />
+          <img src="/aiims.png" alt="aiims" className="h-10 w-auto" />
           {/* <img src="/logo2.png" alt="Logo 2" className="h-10 w-auto" /> */}
         </div>
 
