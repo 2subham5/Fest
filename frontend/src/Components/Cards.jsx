@@ -177,9 +177,9 @@ const Cards = () => {
               `} />
 
               {/* Image icon placeholder */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white/30 text-4xl">
-                📸
-              </div>
+              {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white/30 text-4xl">
+                
+              </div> */}
             </div>
           ))}
         </div>
