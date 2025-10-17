@@ -51,7 +51,7 @@ const EventHighlights = () => {
           {events.map((event) => (
             <div
               key={event.id}
-              onClick={() => handleClick(event)}
+              // onClick={() => handleClick(event)}
               className="group relative rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer aspect-square md:h-80 md:aspect-auto"
             >
               <img
@@ -73,7 +73,7 @@ const EventHighlights = () => {
             {events.map((event) => (
               <div
                 key={event.id}
-                onClick={() => handleClick(event)}
+                // onClick={() => handleClick(event)}
                 className="group relative flex-shrink-0 w-64 rounded-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer"
               >
                 <img

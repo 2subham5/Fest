@@ -2,7 +2,7 @@ import React from "react";
 import '../css/background.css'
 const VideoLogoComponent = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden" id="home">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video

@@ -17,7 +17,15 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8">
           <a href="#home" className="navbar-anchor">HOME</a>
-          <a href="#brochure" className="navbar-anchor">BROCHURE</a>
+          {/* <a href="#brochure" className="navbar-anchor">BROCHURE</a> */}
+          <a
+  href="/EterniaBrochure.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="navbar-anchor"
+>
+  BROCHURE
+</a>
           <a href="#registration" className="navbar-anchor">REGISTRATION</a>
         </nav>
 
