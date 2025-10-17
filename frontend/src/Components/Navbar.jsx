@@ -19,7 +19,7 @@ const Navbar = () => {
           <a href="#home" className="navbar-anchor">HOME</a>
           {/* <a href="#brochure" className="navbar-anchor">BROCHURE</a> */}
           <a
-  href="/EterniaBrochure.pdf"
+  href="/Eternia.pdf"
   target="_blank"
   rel="noopener noreferrer"
   className="navbar-anchor"
