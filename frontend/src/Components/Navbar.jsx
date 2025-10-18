@@ -63,7 +63,7 @@ const Navbar = () => {
             HOME
           </a>
           <a
-            href="#brochure"
+            href="/Eternia.pdf"
             className="navbar-anchor block"
             onClick={() => setIsOpen(false)}
           >
