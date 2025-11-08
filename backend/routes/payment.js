@@ -8,11 +8,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 // const { authenticateUserJwt } = require('../middleware/auth'); // ✅ if auth exports an object
 const { Payment } = require('../db/db');
-const {EventPayment} = require('../db/db');
-const crypto = require('crypto'); 
+const { EventPayment } = require('../db/db');
+const crypto = require('crypto');
 const { z } = require("zod");
 const axios = require('axios');
-const Response = require('../utils/response'); 
+const Response = require('../utils/response');
 const paymentValidationSchema = z.object({
   name: z
     .string()
@@ -32,7 +32,7 @@ const paymentValidationSchema = z.object({
 });
 const sportPaymentValidationSchema = z
   .object({
-        categoryName: z.string().min(1, "Category name is required"),
+    categoryName: z.string().min(1, "Category name is required"),
     subCategory: z.string().min(1, "Subcategory is required"),
     teamName: z.string().optional(),
     individualName: z.string().optional(),
@@ -42,7 +42,7 @@ const sportPaymentValidationSchema = z
     email: z.string().email("Invalid email format"),
     aadhaarCard: z.string().optional(),
     collegeId: z.string().optional(),
-    amount: z.number().positive("Amount must be positive"),
+    amount: z.number(),
   })
   .superRefine((data, ctx) => {
     // Either teamName or individualName must exist
@@ -78,15 +78,15 @@ const sportPaymentValidationSchema = z
           path: ["collegeId"],
         });
       }
-    } else {
-      if (!data.aadhaarCard) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "aadhaarCard is required when institutionName is not provided.",
-          path: ["aadhaarCard"],
-        });
-      }
     }
+    if (!data.aadhaarCard) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "aadhaarCard is required when institutionName is not provided.",
+        path: ["aadhaarCard"],
+      });
+    }
+
   });
 
 // const razorpay = new Razorpay({
@@ -114,7 +114,7 @@ router.post('/pay', async (req, res) => {
         .status(400)
         .json(new Response(400, "This email has already completed a payment.", false));
     }
- 
+
 
     const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
     const productinfo = "Eternia Pass";
@@ -123,12 +123,12 @@ router.post('/pay', async (req, res) => {
     // ✅ Correct PayU test hash formula (single hash)
     const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${name}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
     const hash = crypto.createHash('sha512').update(hashString).digest('hex');
-    
+
     // ✅ Log to verify correctness (optional)
     console.log("PayU Hash String:", hashString);
     console.log("Generated Hash:", hash);
- 
-  let paymentDoc = await Payment.findOne({
+
+    let paymentDoc = await Payment.findOne({
       email,
       status: { $in: ['initiated', 'failed'] }
     });
@@ -187,7 +187,7 @@ router.post('/pay', async (req, res) => {
     if (err.name === "ZodError") {
       return res
         .status(400)
-        .json(new Response(400, err.errors.map(e => e.message).join(", "), false));
+        .json(new Response(400, err.errors?.map(e => e.message).join(", "), false));
     }
     console.error(err);
     return res
@@ -200,8 +200,8 @@ router.post("/sportspay", async (req, res) => {
     // ✅ Validate input using Zod schema
     const validatedData = sportPaymentValidationSchema.parse(req.body);
     const {
-        categoryName,
-    subCategory,
+      categoryName,
+      subCategory,
       teamName,
       individualName,
       leaderName,
@@ -214,32 +214,44 @@ router.post("/sportspay", async (req, res) => {
     } = validatedData;
 
     // ✅ Check for existing payment with same email and issued status
-    const existingIssuedPayment = await EventPayment.findOne({
-      email,
-      status: { $in: ["issued", "expired"] },
-    });
+    // const existingIssuedPayment = await EventPayment.findOne({
+    //   email,
+    //   status: { $in: ["issued", "expired"] },
+    // });
 
-    if (existingIssuedPayment) {
-      return res
-        .status(400)
-        .json(
-          new Response(
-            400,
-            "This email has already completed a sports payment.",
-            false
-          )
-        );
-    }
+    // if (existingIssuedPayment) {
+    //   return res
+    //     .status(400)
+    //     .json(
+    //       new Response(
+    //         400,
+    //         "This email has already completed a sports payment.",
+    //         false
+    //       )
+    //     );
+    // }
 
     // ✅ Generate unique transaction ID
     const txnid = uuidv4().replace(/-/g, "").slice(0, 20);
     const productinfo = "Sports Event";
     const amountINR = amount;
- const firstname = teamName || individualName;
-    // ✅ PayU hash generation
-    const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${firstname}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
-    const hash = crypto.createHash("sha512").update(hashString).digest("hex");
+    const firstname = teamName || individualName;
+    const teamNameConst = teamName || "";
 
+    if (!amountINR || amountINR === 0) {
+      eventPaymentEmail(email, firstname, subCategory, teamName, amount);
+      return res
+        .status(200)
+        .json(
+          new Response(200, "Success", false, {
+            "emailSent": true
+          })
+        );;
+    }
+
+    // ✅ PayU hash generation
+    const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${firstname}|${email}|${teamNameConst}|${subCategory || ""}|||||||||${PAYU_MERCHANT_SALT}`;
+    const hash = crypto.createHash("sha512").update(hashString).digest("hex");
 
 
     // ✅ Find existing pending payment
@@ -251,8 +263,8 @@ router.post("/sportspay", async (req, res) => {
     if (paymentDoc) {
       // Update existing record
       Object.assign(paymentDoc, {
-          categoryName,
-      subCategory,
+        categoryName,
+        subCategory,
         teamName,
         individualName,
         leaderName,
@@ -268,8 +280,8 @@ router.post("/sportspay", async (req, res) => {
     } else {
       // Create new record
       paymentDoc = new EventPayment({
-          categoryName,
-      subCategory,
+        categoryName,
+        subCategory,
         teamName,
         individualName,
         leaderName,
@@ -298,13 +310,13 @@ router.post("/sportspay", async (req, res) => {
       surl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
       furl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
       hash,
-      udf1: "",
-      udf2: "",
+      udf1: teamNameConst,
+      udf2: subCategory || "",
       udf3: "",
       udf4: "",
       udf5: "",
     };
-eventPaymentEmail(email, firstname, amount);
+
     return res
       .status(200)
       .json(
@@ -320,7 +332,7 @@ eventPaymentEmail(email, firstname, amount);
         .json(
           new Response(
             400,
-            err.errors.map((e) => e.message).join(", "),
+            err.errors?.map((e) => e.message).join(", "),
             false
           )
         );
@@ -421,7 +433,96 @@ async function sendPaymentEmail(toEmail, uniqueId) {
     console.error("Error sending payment email:", err);
   }
 }
-async function eventPaymentEmail(toEmail, participantName, amount) {
+
+function getRegistrationForm(eventName, teamName) {
+  const name = eventName.toLowerCase();
+
+  const forms = {
+    "football": "https://docs.google.com/forms/d/e/1FAIpQLSeu1wVow_oXS-bWuE5ZwvSvAkDa4XGt3ZnTs-KHlgvBCcbfmg/viewform?usp=header",
+    "cricket": "https://docs.google.com/forms/d/e/1FAIpQLScPV6FL_xzAmS1tBYltSYq0t_4amk2J3J41J-6_VOfCbdSYxw/viewform?usp=header",
+    "volleyball": "https://forms.gle/M3B3kUb42kMkeVQp7",
+    "basketball": "https://docs.google.com/forms/d/e/1FAIpQLSf9iXrVTR30VqUe4vkGb4foNtchGjeytR1G1zIKoxWM-2mKoA/viewform?usp=header",
+    "kabaddi": "https://docs.google.com/forms/d/e/1FAIpQLSdr1X2hlBSeSGKqY172ee275ZylfCE9LR13Dd7byQilUr6SDQ/viewform?usp=header",
+    "carrom": "https://docs.google.com/forms/d/e/1FAIpQLSdmFBy1oeXGtWKin_AiW4Z17LgVWO8I7vrcMBLqeNNRBXDk9g/viewform?usp=header",
+    "chess": "https://docs.google.com/forms/d/e/1FAIpQLScm5sM_HhslMPKg8t0_7kFw2y1zdSL58U5ESZBu8Fc4-xF4WA/viewform?usp=header",
+    "badminton (singles)": "https://docs.google.com/forms/d/e/1FAIpQLSf5C6ZQjUoLdSIQfqFmfA_nmmvfjUvaICL8lItFI5Gg8de3Vg/viewform?usp=header",
+    "badminton (doubles)": "https://docs.google.com/forms/d/e/1FAIpQLSe-Jq16NoEzf79ZrYfz0hmDkZ2b-K3i3ClDDCbqh1F0Y3HyRA/viewform?usp=header",
+    "badminton (mixed doubles)": "https://docs.google.com/forms/d/e/1FAIpQLSfseATayvN0a_3zzHexlMS1QWg-rbmmAmL_u4px_47_2oqnvA/viewform?usp=header",
+    "table tennis (singles)": "https://docs.google.com/forms/d/e/1FAIpQLSd-TJJJyEbQiRSzg-INKMYdEpqiuM9To8Eg8w0CYXLXgo1_1Q/viewform?usp=header",
+    "table tennis (doubles)": "https://docs.google.com/forms/d/e/1FAIpQLSdMFYb5eyQJZDHjBbtwJyZX8wJMM1XILvfjfak0u58Ah8WNjQ/viewform?usp=header",
+    "lawn tennis (singles)": "https://docs.google.com/forms/d/e/1FAIpQLSfUjRf0AvikPKkIGpZ_AM2InMLD3awVjbThnsif1h-ixlQXFg/viewform?usp=header",
+    "lawn tennis (doubles)": "https://docs.google.com/forms/d/e/1FAIpQLSdbzsoFCdUiJqaKqy9Q_1U6I5t_o8NxHhtIS_oL2zlZuVp9lA/viewform?usp=header",
+    "arm wrestling": "https://docs.google.com/forms/d/e/1FAIpQLSf2pHkkFwhBPrHliKJ7aEl1WwUcfYS8GfkQ-IsCv_-LwujMPg/viewform?usp=header",
+    "shotput": "https://docs.google.com/forms/d/e/1FAIpQLSdEhV2z7iS1ExBJLxfyPVMhNDdghKi-1PPmPRfGePqp__TM-w/viewform?usp=header",
+    "discus throw": "https://docs.google.com/forms/d/e/1FAIpQLSdwYZQ4x_NSTuKAMqnT2CQI85soXuHgChLCBxUs1u7quHtIYQ/viewform?usp=header",
+    "throw ball": "https://docs.google.com/forms/d/e/1FAIpQLSc1u9iLcksnifs0c9330cHx3uJyAWVR7D1Z61L-zDt82yB05w/viewform?usp=header",
+    "100m sprint": "https://docs.google.com/forms/d/e/1FAIpQLSf8x8nG-fpmHz_0ASYTUF3rSSXaClBnIvxcy8zmC9qX81Zylg/viewform?usp=header",
+    "200m sprint": "https://docs.google.com/forms/d/e/1FAIpQLSeK22AXIBCU__9wAhf-dBzA1fPj4l9n-2R3Ste7BxGQtWyIZw/viewform?usp=header",
+    "relay race": "https://docs.google.com/forms/d/e/1FAIpQLSdAijTrm7VJek6ItTEg3eSj08D9Wn5eEnrD8Q3DaKZxBsatCg/viewform?usp=publish-editor",
+
+    "treasure hunt": "https://docs.google.com/forms/d/e/1FAIpQLSf-j-JbV_t0WdAv1joKTU2Dc52W8c3zco49ipeoMrnZWl3oJA/viewform?usp=header",
+    "escape room": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "paper fold": "https://docs.google.com/forms/d/e/1FAIpQLSesNaDRmH9fU_-rIGmGqj7N9yTSpp9YPj-Atu1VUw9GOOTzkw/viewform?usp=header",
+
+    "tug of war": "https://docs.google.com/forms/d/e/1FAIpQLSf2tWdPMZBV9so7h2rvZDz-0bh5DwqVzZ_BKFXxX8elBoSoGQ/viewform?usp=header",
+    "bottle flip": "https://docs.google.com/forms/d/e/1FAIpQLSfCt08MIT0gGz_lJvuEslADw6EbsZNKOeihRVRJVZHUr6FytA/viewform?usp=header",
+    "ping pong": "https://docs.google.com/forms/d/e/1FAIpQLScJ3bGaASR_4VVOuqrwrTGYHAQQM-LG6-cHHknxwOjKciGwlg/viewform?usp=header",
+    "beg borrow steal": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "pictionary": "https://docs.google.com/forms/d/e/1FAIpQLSfh5tyBwbgrW0lSg7A73q4b1d7E1_79PMZJu0y9oyZOMKB5Ig/viewform?usp=header",
+
+    "poster": "https://forms.gle/ftyXAyFr8YzZJhQT7",
+    "tote bag painting": "https://forms.gle/KbRCRSHS1NrE1Abs5",
+    "face painting": "https://docs.google.com/forms/d/e/1FAIpQLSdNA7VCt0mPlp2MnvKUYXvgGg36MoCTvn7kL6oAj0EyYAbAQA/viewform?usp=dialog",
+    "photography": "https://forms.gle/cZxA7yvCAzMSDuSK9",
+    "origami": "https://docs.google.com/forms/d/e/1FAIpQLSdiQ9cbeDnm9daJm6OGpZlpSoDItgJxNLh1nUW5oUI2z38r_Q/viewform?usp=header",
+    "stone painting": "https://docs.google.com/forms/d/e/1FAIpQLSesNaDRmH9fU_-rIGmGqj7N9yTSpp9YPj-Atu1VUw9GOOTzkw/viewform?usp=header",
+    "mix media": "https://docs.google.com/forms/d/e/1FAIpQLScBvHuRjzi1BL8QtG029hOz4xg0hZaoBprEKmfUPm9bTObTDg/viewform?usp=header",
+
+    "bgmi": "https://forms.gle/zJUUHLdUbSHqb1TJA",
+    "codm multiplayer": "https://forms.gle/zJUUHLdUbSHqb1TJA",
+    "codm br": "https://forms.gle/zJUUHLdUbSHqb1TJA",
+    "efootball": "https://forms.gle/zJUUHLdUbSHqb1TJA",
+    "eafc": "https://forms.gle/zJUUHLdUbSHqb1TJA",
+
+    "ocean jam": "https://forms.gle/kDYia1Mz2QrNkvMY7",
+    "syncopation (dance) - team": "https://forms.gle/efVoKdSApVzmtY6V9",
+    "syncopation (dance) - solo": "https://forms.gle/bMoaawFpV4GSXFEL8",
+    "the deep blue script": "https://forms.gle/Hf9oYDrkHKgAWhqJA",
+    "geek cheek gala": "https://forms.gle/xhy8Fw95NsygMRAQ7",
+    "rhythmixia (instrumental - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
+    "rhythmixia (instrumental - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
+    "crescendo (singing - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
+    "crescendo (singing - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
+    "crescendo (singing - group)": "https://forms.gle/efVoKdSApVzmtY6V9",
+
+    // Literature & Cultural Block (all share same link)
+    "kotoba no umi": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "shinsekai stories": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "monogatari no yume": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "sakura verses": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "samurai stand-up": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "kamikaze clash": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "shogun's council": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "the exquizite": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "the otaku oracle": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "the hokage trials": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "hayakute curious": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "karaoke diagnosis": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "spelling bee": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "meme literature": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+  };
+
+  for (const key in forms) {
+    if (name.includes(key)) { return forms[key]; }
+  }
+
+  return teamName && teamName !== "" ? "https://forms.gle/ANPRCwxepFRfotSS7" : "https://forms.gle/x67zXrT6xPnAcikz7"
+}
+
+
+
+
+async function eventPaymentEmail(toEmail, participantName, eventName, teamName, amount) {
   try {
     // ✅ Configure nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -436,14 +537,82 @@ async function eventPaymentEmail(toEmail, participantName, amount) {
     const mailOptions = {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
-      subject: "Congratulations! Payment Successful",
+      subject: "ETERNIA 2025 || Congratulations! Payment Successful. 🎉",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #4CAF50;">🎉 Congratulations ${participantName}!</h2>
           
-          <p style="font-size: 16px; line-height: 1.6;">
-            You have successfully participated by paying <strong>₹${amount}</strong> for the event.
+          <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f6f8fa; margin: 0; padding: 0; color: #333333;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 650px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <tr>
+      <td style="background-color: #004aad; padding: 20px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 22px;">AIIMS GUWAHATI</h1>
+        <p style="color: #d9e6ff; margin: 5px 0 0; font-size: 14px;">Team Eternia</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="padding: 30px;">
+        <p style="font-size: 16px; color: #333;"><strong>🎉 Congratulations ${participantName ? participantName : ""}${teamName && teamName !== "" ? `(TEAM: ${teamName})` : ""}!</strong></p>
+
+        <p style="font-size: 15px; line-height: 1.6; color: #333;">
+          Greetings from <strong>AIIMS Guwahati!</strong> 🌟
+        </p>
+
+        <p style="font-size: 15px; line-height: 1.6; color: #333;">
+          We are happy to inform you that your registration for the <strong>[${eventName}]</strong> has been successfully completed, and we have received your payment of <strong>₹${amount}</strong>.
+        </p>
+
+        <p style="font-size: 15px; line-height: 1.6; color: #333;">
+          Thank you for being a part of this event — we appreciate your enthusiasm and participation. We are excited to have you compete and showcase your talent!
+        </p>
+
+        <hr style="border: none; border-top: 1px solid #eee; margin: 25px 0;" />
+
+        <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📍 Venue</h3>
+        <p style="font-size: 15px; color: #333; line-height: 1.6;">
+          <strong>AIIMS Guwahati</strong><br>
+          <a href="https://maps.app.goo.gl/zRQwQRxFqkYGN8po7?g_st=ipc" style="color: #004aad; text-decoration: none; cursor: pointer;">View on Google Maps</a>
+        </p>
+
+         <p style="font-size: 24px;">
+            <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="color: blue; text-decoration: underline; font-weight: 500; cursor: pointer;">
+              Please fill out this Google Form mandatorily: Click Here
+            </a>
           </p>
+
+        <p style="font-size: 15px; color: #333; line-height: 1.6;">
+          Please make sure to <strong>carry a valid ID document</strong> for identification and <strong>go through the rulebook</strong> once before the competition.
+        </p>
+
+        <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
+        <p style="font-size: 15px; line-height: 1.6;">
+          📧 Email: <a href="mailto:aiimseternia@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
+          📞 Phone: <a href="tel:7429775590" style="color: #004aad; text-decoration: none;">7429775590</a>,
+          <a href="tel:7339940711" style="color: #004aad; text-decoration: none;">7339940711</a>
+        </p>
+
+        <p style="font-size: 15px; line-height: 1.6; color: #333;">
+          We wish you all the best for the competition! 💫<br>
+          Looking forward to your active participation.
+        </p>
+
+        <p style="font-size: 15px; color: #333; margin-top: 25px;">
+          Warm regards,<br>
+          <strong>Team Eternia</strong><br>
+          <strong>AIIMS Guwahati</strong>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="background-color: #f0f3f7; text-align: center; padding: 15px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+        <p style="font-size: 12px; color: #666; margin: 0;">
+          © 2025 Team Eternia, AIIMS Guwahati. All rights reserved.
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
           
           <p style="font-size: 14px; color: #666; margin-top: 30px;">
             See you at the event! 🎊
@@ -537,7 +706,7 @@ router.post("/verifyPayment", async (req, res) => {
         { status: "issued", payuPaymentId: mihpayid },
         { new: true }
       );
- sendPaymentEmail(email, txnid);
+      sendPaymentEmail(email, txnid);
       // ✅ Redirect with success params
       redirectUrl += `?success=true&uniqueId=${txnid}&email=${encodeURIComponent(email)}`;
     } else {
@@ -570,24 +739,24 @@ router.post("/eventverifyPayment", async (req, res) => {
       productinfo,
       firstname,
       email,
+      udf1: teamName,
+      udf2: subCategory
     } = req.body;
 
-    // ✅ Reversed hash string formula for verification
-    // Format: SALT|status|||||||||||email|name|productinfo|amount|txnid|KEY
-    const hashString = `${PAYU_MERCHANT_SALT}|${status}|||||||||||${email}|${firstname}|${productinfo}|${amount}|${txnid}|${PAYU_MERCHANT_KEY}`;
+    const hashString = `${PAYU_MERCHANT_SALT}|${status}||||||||${subCategory || ""}|${teamName || ""}|${email}|${firstname}|${productinfo}|${amount}|${txnid}|${PAYU_MERCHANT_KEY}`;
     const expectedHash = crypto.createHash("sha512").update(hashString).digest("hex");
 
-
-
     let redirectUrl = `/`;
-
-    if (receivedHash === expectedHash && status === "success") {
+    console.log("Status Check:", status)
+    if (status === "success") {
       await EventPayment.findOneAndUpdate(
         { uniqueId: txnid },
         { status: "issued", payuPaymentId: mihpayid },
         { new: true }
       );
-eventPaymentEmail(email, firstname, amount);
+
+      eventPaymentEmail(email, firstname, subCategory, teamName, amount);
+
       redirectUrl += `?success=true&uniqueId=${txnid}&email=${encodeURIComponent(email)}`;
     } else {
       await EventPayment.findOneAndUpdate(
@@ -602,11 +771,11 @@ eventPaymentEmail(email, firstname, amount);
 
   } catch (err) {
     console.error("Error verifying payment:", err);
-
     const redirectUrl = `/?success=false&message=${encodeURIComponent(err.message)}`;
     return res.redirect(redirectUrl);
   }
 });
+
 
 router.post("/send-whatsapp", async (req, res) => {
   const { contact, uniqueId } = req.body;
@@ -631,7 +800,7 @@ router.post("/send-whatsapp", async (req, res) => {
         }
       }
     );
-console.log("success");
+    console.log("success");
     res.json({ success: true, data: response.data });
   } catch (error) {
     console.error("WhatsApp API Error:", error.response?.data || error.message);
