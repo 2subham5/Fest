@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Event.css";
 import { scrollToOffsetFromBottomWhenStable } from "../utils/function";
+// import { route } from "../../../backend/routes/payment";
 
 const EventHighlights = () => {
   const navigate = useNavigate();
@@ -42,6 +43,12 @@ const EventHighlights = () => {
       title: "Cultural",
       image: "https://cdn.pixabay.com/photo/2023/01/21/12/04/bharatanatyam-7733729_1280.jpg",
       route: "/cultural"
+    },
+    {
+      id:7,
+      title: "Meta-Stasiss",
+       image: "/METASTASISS.png",
+      route: "/metastasiss"
     }
   ];
 
@@ -251,7 +258,7 @@ const EventHighlights = () => {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

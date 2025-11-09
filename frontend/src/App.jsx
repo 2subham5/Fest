@@ -25,6 +25,7 @@ import Login from './Pages/Login';
 import EventPaymentTable from './Components/EventPaymentTable';
 import Cultural from './Pages/Events/Cultural';
 import SpecialEvents from './Components/SpecialEvents';
+import MetaStasiss from './Pages/Events/MetaStasiss';
 export default function App() {
   return (
     <RecoilRoot>
@@ -68,6 +69,7 @@ export default function App() {
               <Route path="/esports" element={<Esports />} />
               <Route path="/creative" element={<Creative />} />
               <Route path="/cultural" element={<Cultural />} />
+              <Route path="/metastasiss" element={<MetaStasiss />} />
             </Routes>
           </main>
 

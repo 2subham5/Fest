@@ -307,8 +307,8 @@ router.post("/sportspay", async (req, res) => {
       firstname: teamName || individualName,
       email,
       phone: mobileNumber,
-      surl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
-      furl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
+      surl: `http://localhost:3000/payment/eventverifyPayment`,
+      furl: `http://localhost:3000/payment/eventverifyPayment`,
       hash,
       udf1: teamNameConst,
       udf2: subCategory || "",
@@ -747,7 +747,7 @@ router.post("/eventverifyPayment", async (req, res) => {
     const hashString = `${PAYU_MERCHANT_SALT}|${status}||||||||${subCategory || ""}|${teamName || ""}|${email}|${firstname}|${productinfo}|${amount}|${txnid}|${PAYU_MERCHANT_KEY}`;
     const expectedHash = crypto.createHash("sha512").update(hashString).digest("hex");
 
-    let redirectUrl = `/`;
+    let redirectUrl = `/sports`;
     console.log("Status Check:", status)
     if (status === "success") {
       await EventPayment.findOneAndUpdate(

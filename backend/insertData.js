@@ -99,7 +99,25 @@ const data = [
       // { name: "Crescendo (Singing - Group)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       // { name: "Enchante (Fashion)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
     ]
-  }
+  },
+  {
+  categoryName: "META-STASISS",
+  subcategories: [
+    // SOLO EVENTS
+    { name: "CODE Dx (Solo)", isPaid: true, paymentAmount: 200, unit: "per person", team: false },
+    { name: "MED-CHRONICLES", isPaid: false, team:false},
+    { name: "Did You Know (Online Reel Competition)", isPaid: false, team:false},
+
+    // DUET EVENTS
+    { name: "RESEARCH SHARK TANK (Duet)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+    { name: "CODE Dx (Duet)", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+    { name: "MED CHARADES", isPaid: true, paymentAmount: 50, unit: "per person", team: true },
+
+    // GROUP EVENTS
+    { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+    { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
+  ]
+}
 ];
 
 // ✅ Connect and replace existing categories
