@@ -87,7 +87,7 @@ const data = [
     categoryName: "Cultural",
     subcategories: [
       { name: "Ocean Jam (Battle of the Bands)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      { name: "Syncopation (Dance) - Team", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
+      { name: "Syncopation (Dance) - Duet", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       { name: "Syncopation (Dance) - Solo", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "The Deep Blue Script (Drama)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       { name: "Geek Cheek Gala", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
@@ -95,7 +95,7 @@ const data = [
       { name: "Rhythmixia (Instrumental - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       { name: "Crescendo (Singing - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "Crescendo (Singing - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "Crescendo (Singing - Group)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
+      // { name: "Crescendo (Singing - Group)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       // { name: "Enchante (Fashion)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
     ]
   }

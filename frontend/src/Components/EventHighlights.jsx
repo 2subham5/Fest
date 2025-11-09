@@ -108,7 +108,7 @@ const EventHighlights = () => {
               <div className="md:w-1/2 pl-12 md:text-left text-center px-6">
                 <h4 className="text-white font-semibold text-2xl mb-3">Step 2 — Event Registration</h4>
                 <p className="text-gray-300 leading-relaxed">
-                  Go to the Events section, choose a category and select the event you want to participate in. Confirm your entry.
+                  Go to the Events section, choose a category and select the event you want to participate in. <b>It is mandatory to fill Google form sent in mail.</b> Confirm your entry.
                 </p>
               </div>
             </div>
@@ -142,7 +142,7 @@ const EventHighlights = () => {
               <div className="absolute left-1/2 transform -translate-x-1/2 bg-teal-400 w-6 h-6 rounded-full shadow-[0_0_15px_5px_rgba(45,212,191,0.6)]"></div>
 
               <div className="md:w-1/2 pl-12 md:text-left text-center px-6">
-                <h4 className="text-white font-semibold text-2xl mb-3">Step 4 — Accommodation</h4>
+                <h4 className="text-white font-semibold text-2xl mb-3">Step 4 — Send Enquiry For Accommodation</h4>
                 <p className="text-gray-300 leading-relaxed">
                   Need a stay? Complete the accommodation form — your hostel allocation & details will be shared instantly.
                 </p>
@@ -193,7 +193,7 @@ const EventHighlights = () => {
           >
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400/30 to-cyan-400/30 opacity-0 group-hover:opacity-40 blur-lg transition-all duration-300 pointer-events-none"></div>
             <span className="relative text-white text-xl font-semibold tracking-tight">
-              Accommodation
+               Accommodation
             </span>
           </button>
 
