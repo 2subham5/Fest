@@ -371,7 +371,7 @@ const Cultural = () => {
                         </div>
 
                         {/* Institution Checkbox */}
-                        <div className="flex items-center gap-4 bg-gray-700/30 p-4 rounded-lg">
+                        {/* <div className="flex items-center gap-4 bg-gray-700/30 p-4 rounded-lg">
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input
                                     type="checkbox"
@@ -394,10 +394,10 @@ const Cultural = () => {
                                     I am from an Institution/College
                                 </span>
                             </label>
-                        </div>
+                        </div> */}
 
                         {/* Institution Name */}
-                        {hasInstitution && (
+                        {/* {hasInstitution && (
                             <div>
                                 <label className="block text-gray-300 text-sm font-medium mb-2">
                                     Institution Name *
@@ -419,7 +419,7 @@ const Cultural = () => {
                                     </p>
                                 )}
                             </div>
-                        )}
+                        )} */}
 
 
                         {/* Aadhaar */}
