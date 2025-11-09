@@ -414,6 +414,7 @@ async function sendPaymentEmail(toEmail, uniqueId) {
       to: toEmail,
       subject: "Payment Successful - Your Unique ID",
       html: `
+       <h3>Congratulations! You have received the Elite Pass!</h3>
         <h3>Payment Successful!</h3>
         <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
         <p>Scan the attached QR code to access your payment details.</p>

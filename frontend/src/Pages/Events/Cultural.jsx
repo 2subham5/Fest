@@ -481,7 +481,7 @@ const Cultural = () => {
                         </a>
 
 
-
+ <div><b>Make sure to fill out the Google Form sent to your email after making the payment.</b></div>
                         <button
                             type="submit"
                             disabled={isProcessing}

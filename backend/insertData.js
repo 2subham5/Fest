@@ -87,7 +87,8 @@ const data = [
     categoryName: "Cultural",
     subcategories: [
       { name: "Ocean Jam (Battle of the Bands)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      { name: "Syncopation (Dance) - Duet", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
+      { name: "Syncopation (Dance) - Duet", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      { name: "Syncopation (Dance) - Group", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       { name: "Syncopation (Dance) - Solo", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "The Deep Blue Script (Drama)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       { name: "Geek Cheek Gala", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
