@@ -238,16 +238,7 @@ router.post("/sportspay", async (req, res) => {
     const firstname = teamName || individualName;
     const teamNameConst = teamName || "";
 
-    if (!amountINR || amountINR === 0) {
-      eventPaymentEmail(email, firstname, subCategory, teamName, amount);
-      return res
-        .status(200)
-        .json(
-          new Response(200, "Success", false, {
-            "emailSent": true
-          })
-        );;
-    }
+
 
     // ✅ PayU hash generation
     const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${firstname}|${email}|${teamNameConst}|${subCategory || ""}|||||||||${PAYU_MERCHANT_SALT}`;
@@ -296,7 +287,16 @@ router.post("/sportspay", async (req, res) => {
       });
       await paymentDoc.save();
     }
-
+    if (!amountINR || amountINR === 0) {
+      eventPaymentEmail(email, firstname, subCategory, teamName, amount);
+      return res
+        .status(200)
+        .json(
+          new Response(200, "Success", false, {
+            "emailSent": true
+          })
+        );;
+    }
     // ✅ PayU data payload
     const payuUrl = `${PAYU_BASE_URL}/_payment`;
     const payuData = {
