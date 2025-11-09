@@ -45,6 +45,7 @@ const EventPaymentTable = () => {
   });
 
   const columns = [
+    { name: "Individual Name", selector: row => row.individualName || "-", sortable: true },
     { name: "Leader Name", selector: row => row.leaderName || "-", sortable: true },
     { name: "Team Name", selector: row => row.teamName || "-", sortable: true },
     { name: "Email", selector: row => row.email, sortable: true },
