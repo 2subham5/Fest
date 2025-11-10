@@ -511,6 +511,14 @@ function getRegistrationForm(eventName, teamName) {
     "karaoke diagnosis": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "spelling bee": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "meme literature": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+
+    // metastasiss
+    "CODE Dx (Solo)":"https://forms.gle/34mqhro4PrT3oFue6",
+    "MED-CHRONICLES":"https://forms.gle/5ZSf6c9G2r854VLN8",
+    "Did You Know (Online Reel Competition)":"https://forms.gle/jmV2Ca4qiS3fBRc77",
+    "RESEARCH SHARK TANK (Duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
+    "MED CHARADES":"https://forms.gle/d1zfLqCMTqFUjUus9",
+
   };
 
   for (const key in forms) {
