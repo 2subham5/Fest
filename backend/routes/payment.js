@@ -747,7 +747,7 @@ router.post("/eventverifyPayment", async (req, res) => {
     const hashString = `${PAYU_MERCHANT_SALT}|${status}||||||||${subCategory || ""}|${teamName || ""}|${email}|${firstname}|${productinfo}|${amount}|${txnid}|${PAYU_MERCHANT_KEY}`;
     const expectedHash = crypto.createHash("sha512").update(hashString).digest("hex");
 
-    let redirectUrl = `/sports`;
+    let redirectUrl = `/`;
     console.log("Status Check:", status)
     if (status === "success") {
       await EventPayment.findOneAndUpdate(
