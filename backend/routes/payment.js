@@ -288,6 +288,8 @@ router.post("/sportspay", async (req, res) => {
       await paymentDoc.save();
     }
     if (!amountINR || amountINR === 0) {
+         paymentDoc.status = "issued";
+      await paymentDoc.save();
       eventPaymentEmail(email, firstname, subCategory, teamName, amount);
       return res
         .status(200)
