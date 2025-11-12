@@ -560,7 +560,11 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
         <p style="color: #d9e6ff; margin: 5px 0 0; font-size: 14px;">Team Eternia</p>
       </td>
     </tr>
-
+  <p style="font-size: 24px;">
+            <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="color: blue; text-decoration: underline; font-weight: 500; cursor: pointer;">
+              Please fill out this Google Form mandatorily: Click Here
+            </a>
+          </p>
     <tr>
       <td style="padding: 30px;">
         <p style="font-size: 16px; color: #333;"><strong>🎉 Congratulations ${participantName ? participantName : ""}${teamName && teamName !== "" ? `(TEAM: ${teamName})` : ""}!</strong></p>
@@ -585,11 +589,7 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
           <a href="https://maps.app.goo.gl/zRQwQRxFqkYGN8po7?g_st=ipc" style="color: #004aad; text-decoration: none; cursor: pointer;">View on Google Maps</a>
         </p>
 
-         <p style="font-size: 24px;">
-            <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="color: blue; text-decoration: underline; font-weight: 500; cursor: pointer;">
-              Please fill out this Google Form mandatorily: Click Here
-            </a>
-          </p>
+       
 
         <p style="font-size: 15px; color: #333; line-height: 1.6;">
           Please make sure to <strong>carry a valid ID document</strong> for identification and <strong>go through the rulebook</strong> once before the competition.

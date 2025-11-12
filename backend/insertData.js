@@ -95,7 +95,7 @@ const data = [
       { name: "Syncopation (Dance) - Group", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       { name: "Syncopation (Dance) - Solo", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "The Deep Blue Script (Drama)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      { name: "Geek Cheek Gala", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
+      { name: "Geek Cheek Gala(Cosplay)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "Rhythmixia (Instrumental - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "Rhythmixia (Instrumental - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       { name: "Crescendo (Singing - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
