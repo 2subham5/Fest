@@ -195,7 +195,7 @@ const EventHighlights = () => {
 
           {/* Accommodation Registration */}
           <button
-            onClick={() => window.open("https://forms.gle/kGPjZt7WRghgHeks5", "_blank")}
+            onClick={() => window.open("https://forms.gle/ro9ipNmfFJ5LcUvGA", "_blank")}
             className="group relative w-full rounded-xl bg-gradient-to-br from-teal-700 to-teal-500 py-4 px-5 shadow-xl border border-teal-400 transition-transform hover:scale-105"
           >
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400/30 to-cyan-400/30 opacity-0 group-hover:opacity-40 blur-lg transition-all duration-300 pointer-events-none"></div>

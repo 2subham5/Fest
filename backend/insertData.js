@@ -39,7 +39,10 @@ const data = [
       { name: "Bottle Flip", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
       { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
       { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      { name: "Pictionary", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
+      { name: "Pictionary", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      {name:"Last To Leave", isPaid:true, paymentAmount:50,unit:"per person", team:false},
+      {name:"You Laugh You Loose", isPaid:true, paymentAmount:50,unit:"per person", team:false}
+
     ]
   },
   {
@@ -80,7 +83,8 @@ const data = [
       { name: "CODM Multiplayer", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
       { name: "CODM BR", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       { name: "eFootball", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "EAFC", isPaid: true, paymentAmount: 50, unit: "per person", team: false }
+      { name: "EAFC", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      { name: "Mobile Legends", isPaid: true, paymentAmount: 250, unit: "per team", team: true }
     ]
   },
   {

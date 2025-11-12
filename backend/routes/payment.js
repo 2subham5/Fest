@@ -464,7 +464,7 @@ function getRegistrationForm(eventName, teamName) {
     "relay race": "https://docs.google.com/forms/d/e/1FAIpQLSdAijTrm7VJek6ItTEg3eSj08D9Wn5eEnrD8Q3DaKZxBsatCg/viewform?usp=publish-editor",
 
     "treasure hunt": "https://docs.google.com/forms/d/e/1FAIpQLSf-j-JbV_t0WdAv1joKTU2Dc52W8c3zco49ipeoMrnZWl3oJA/viewform?usp=header",
-    "escape room": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "escape room": "https://forms.gle/DAMHW2y5y8Mgo16P9",
     "paper fold": "https://docs.google.com/forms/d/e/1FAIpQLSesNaDRmH9fU_-rIGmGqj7N9yTSpp9YPj-Atu1VUw9GOOTzkw/viewform?usp=header",
 
     "tug of war": "https://docs.google.com/forms/d/e/1FAIpQLSf2tWdPMZBV9so7h2rvZDz-0bh5DwqVzZ_BKFXxX8elBoSoGQ/viewform?usp=header",
@@ -548,7 +548,7 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
     const mailOptions = {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
-      subject: "ETERNIA 2025 || Congratulations! Payment Successful. 🎉",
+      subject: "ETERNIA 2025 || Congratulations! Payment Successful.Mandatory to fill the google form. 🎉",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           
