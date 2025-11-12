@@ -491,7 +491,7 @@ function getRegistrationForm(eventName, teamName) {
     "syncopation (dance) - team": "https://forms.gle/efVoKdSApVzmtY6V9",
     "syncopation (dance) - solo": "https://forms.gle/bMoaawFpV4GSXFEL8",
     "the deep blue script": "https://forms.gle/Hf9oYDrkHKgAWhqJA",
-    "geek cheek gala": "https://forms.gle/xhy8Fw95NsygMRAQ7",
+    "geek cheek gala (Cosplay)": "https://forms.gle/xhy8Fw95NsygMRAQ7",
     "rhythmixia (instrumental - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
     "rhythmixia (instrumental - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
     "crescendo (singing - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
