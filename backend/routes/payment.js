@@ -490,9 +490,9 @@ function getRegistrationForm(eventName, teamName) {
     "ocean jam": "https://forms.gle/kDYia1Mz2QrNkvMY7",
     "syncopation (dance) - team": "https://forms.gle/efVoKdSApVzmtY6V9",
     "syncopation (dance) - solo": "https://forms.gle/bMoaawFpV4GSXFEL8",
-    "Syncopation (Dance) - Duet": "https://forms.gle/MpQp5BqZh63Xm58FA",
+    "Syncopation (dance) - duet": "https://forms.gle/MpQp5BqZh63Xm58FA",
     "the deep blue script": "https://forms.gle/Hf9oYDrkHKgAWhqJA",
-    "geek cheek gala (Cosplay)": "https://forms.gle/xhy8Fw95NsygMRAQ7",
+    "geek cheek gala (cosplay)": "https://forms.gle/xhy8Fw95NsygMRAQ7",
     "rhythmixia (instrumental - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
     "rhythmixia (instrumental - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
     "crescendo (singing - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
@@ -516,11 +516,11 @@ function getRegistrationForm(eventName, teamName) {
     "meme literature": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
 
     // metastasiss
-    "CODE Dx (Solo)":"https://forms.gle/34mqhro4PrT3oFue6",
-    "MED-CHRONICLES":"https://forms.gle/5ZSf6c9G2r854VLN8",
-    "Did You Know (Online Reel Competition)":"https://forms.gle/jmV2Ca4qiS3fBRc77",
-    "RESEARCH SHARK TANK (Duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
-    "MED CHARADES":"https://forms.gle/d1zfLqCMTqFUjUus9",
+    "code dx (solo)":"https://forms.gle/34mqhro4PrT3oFue6",
+    "med-chronicles":"https://forms.gle/5ZSf6c9G2r854VLN8",
+    "did you know (online reel competition)":"https://forms.gle/jmV2Ca4qiS3fBRc77",
+    "research shark tank (duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
+    "med charades":"https://forms.gle/d1zfLqCMTqFUjUus9",
 
   };
 
