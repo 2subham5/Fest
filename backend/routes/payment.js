@@ -125,8 +125,8 @@ router.post('/pay', async (req, res) => {
     const hash = crypto.createHash('sha512').update(hashString).digest('hex');
 
     // ✅ Log to verify correctness (optional)
-    console.log("PayU Hash String:", hashString);
-    console.log("Generated Hash:", hash);
+    // console.log("PayU Hash String:", hashString);
+    // console.log("Generated Hash:", hash);
 
     let paymentDoc = await Payment.findOne({
       email,
@@ -487,16 +487,16 @@ function getRegistrationForm(eventName, teamName) {
     "efootball": "https://forms.gle/zJUUHLdUbSHqb1TJA",
     "eafc": "https://forms.gle/zJUUHLdUbSHqb1TJA",
 
-    "ocean jam": "https://forms.gle/kDYia1Mz2QrNkvMY7",
-    "syncopation (dance) - team": "https://forms.gle/efVoKdSApVzmtY6V9",
-    "syncopation (dance) - solo": "https://forms.gle/bMoaawFpV4GSXFEL8",
-    "Syncopation (dance) - duet": "https://forms.gle/MpQp5BqZh63Xm58FA",
-    "the deep blue script": "https://forms.gle/Hf9oYDrkHKgAWhqJA",
+    "ocean Jam (battle of the bands)": "https://forms.gle/kDYia1Mz2QrNkvMY7",
+    "syncopation (dance) - group": "https://forms.gle/5kzPWvQngsJ5QggcA",
+    "syncopation (dance) - solo": "https://forms.gle/Zs8fhc1XHD7mykr47",
+    "Syncopation (dance) - duet": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
+    "the deep blue script (drama)": "https://forms.gle/Hf9oYDrkHKgAWhqJA",
     "geek cheek gala (cosplay)": "https://forms.gle/xhy8Fw95NsygMRAQ7",
-    "rhythmixia (instrumental - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
-    "rhythmixia (instrumental - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
-    "crescendo (singing - solo)": "https://forms.gle/bMoaawFpV4GSXFEL8",
-    "crescendo (singing - duet)": "https://forms.gle/M3B3kUb42kMkeVQp7",
+    "rhythmixia (instrumental - solo)": "https://forms.gle/Zs8fhc1XHD7mykr47",
+    "rhythmixia (instrumental - duet)": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
+    "crescendo (singing - solo)": "https://forms.gle/Zs8fhc1XHD7mykr47",
+    "crescendo (singing - duet)": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
     "crescendo (singing - group)": "https://forms.gle/efVoKdSApVzmtY6V9",
 
     // Literature & Cultural Block (all share same link)
