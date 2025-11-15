@@ -23,7 +23,7 @@ const data = [
       { name: "Arm Wrestling", isPaid: true, paymentAmount: 100, gender: "male", team: false },
       { name: "Shotput", isPaid: true, paymentAmount: 100, gender: "both", team: false },
       { name: "Discus Throw", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      { name: "Throw Ball", isPaid: true, paymentAmount: 100, gender: "female", team: false },
+      { name: "Throw Ball", isPaid: true, paymentAmount: 800, gender: "both", team: false },
       { name: "100m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
       { name: "200m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
       { name: "Relay Race", isPaid: true, paymentAmount: 400, gender: "both", team: true }
@@ -72,7 +72,7 @@ const data = [
       { name: "The Hokage Trials: The Sports Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       { name: "Hayakute Curious: The General Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       { name: "Karaoke Diagnosis: Provisional Diagnosis @ Bollywood/Hollywood!", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "Spelling Bee", isPaid: false, team: false },
+      { name: "SAI Sports Quiz", isPaid: false, team: false },
       { name: "Meme Literature", isPaid: false, team: false }
     ]
   },

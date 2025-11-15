@@ -514,7 +514,7 @@ function getRegistrationForm(eventName, teamName) {
     "karaoke diagnosis": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "spelling bee": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "meme literature": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
-
+     "sai sports quiz": "https://forms.gle/tctgQTewiHX2UamQ6",
     // metastasiss
     "code dx (solo)":"https://forms.gle/34mqhro4PrT3oFue6",
     "med-chronicles":"https://forms.gle/5ZSf6c9G2r854VLN8",
