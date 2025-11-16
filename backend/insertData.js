@@ -32,7 +32,7 @@ const data = [
   {
     categoryName: "InformalEvent",
     subcategories: [
-      { name: "Treasure Hunt", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      // { name: "Treasure Hunt", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
       { name: "Escape Room", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "Paper Fold", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
       { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
