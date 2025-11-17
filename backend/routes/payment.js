@@ -470,7 +470,7 @@ function getRegistrationForm(eventName, teamName) {
     "tug of war": "https://docs.google.com/forms/d/e/1FAIpQLSf2tWdPMZBV9so7h2rvZDz-0bh5DwqVzZ_BKFXxX8elBoSoGQ/viewform?usp=header",
     "bottle flip": "https://docs.google.com/forms/d/e/1FAIpQLSfCt08MIT0gGz_lJvuEslADw6EbsZNKOeihRVRJVZHUr6FytA/viewform?usp=header",
     "ping pong": "https://docs.google.com/forms/d/e/1FAIpQLScJ3bGaASR_4VVOuqrwrTGYHAQQM-LG6-cHHknxwOjKciGwlg/viewform?usp=header",
-    "beg borrow steal": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
+    "beg borrow steal": "https://forms.gle/GGWUJyNFupwEEV2m9",
     "pictionary": "https://docs.google.com/forms/d/e/1FAIpQLSfh5tyBwbgrW0lSg7A73q4b1d7E1_79PMZJu0y9oyZOMKB5Ig/viewform?usp=header",
 
     "poster": "https://forms.gle/ftyXAyFr8YzZJhQT7",
