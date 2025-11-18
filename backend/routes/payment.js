@@ -488,15 +488,15 @@ function getRegistrationForm(eventName, teamName) {
     "eafc": "https://forms.gle/zJUUHLdUbSHqb1TJA",
 
     "ocean jam (battle of the bands)": "https://forms.gle/nJNUVaTPuSLZLCTCA",
-    "syncopation (dance) - group": "https://forms.gle/5kzPWvQngsJ5QggcA",
-    "syncopation (dance) - solo": "https://forms.gle/Zs8fhc1XHD7mykr47",
-    "Syncopation (dance) - duet": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
+    "syncopation (dance) - group": "https://forms.gle/k78LjT4S8ZqFubBs7",
+    "syncopation (dance) - solo": "https://forms.gle/wmH7Jq3yv9f1yn5v8",
+    "Syncopation (dance) - duet": "https://forms.gle/8jTjmhLiUAaz4DwC8",
     "the deep blue script (drama)": "https://forms.gle/5t8zqVVRaWohUhH66",
     "geek cheek gala (cosplay)": "https://forms.gle/phnNZAchKdGVjBAp8",
-    "rhythmixia (instrumental - solo)": "https://forms.gle/Zs8fhc1XHD7mykr47",
-    "rhythmixia (instrumental - duet)": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
-    "crescendo (singing - solo)": "https://forms.gle/Zs8fhc1XHD7mykr47",
-    "crescendo (singing - duet)": "https://forms.gle/yYbA7YVbLr2UZ1Gk8",
+    "rhythmixia (instrumental - solo)": "https://forms.gle/wmH7Jq3yv9f1yn5v8",
+    "rhythmixia (instrumental - duet)": "https://forms.gle/8jTjmhLiUAaz4DwC8",
+    "crescendo (singing - solo)": "https://forms.gle/wmH7Jq3yv9f1yn5v8",
+    "crescendo (singing - duet)": "https://forms.gle/8jTjmhLiUAaz4DwC8",
     "crescendo (singing - group)": "https://forms.gle/efVoKdSApVzmtY6V9",
 
     // Literature & Cultural Block (all share same link)
