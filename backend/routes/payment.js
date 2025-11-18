@@ -443,7 +443,7 @@ function getRegistrationForm(eventName, teamName) {
   const forms = {
     "football": "https://docs.google.com/forms/d/e/1FAIpQLSeu1wVow_oXS-bWuE5ZwvSvAkDa4XGt3ZnTs-KHlgvBCcbfmg/viewform?usp=header",
     "cricket": "https://docs.google.com/forms/d/e/1FAIpQLScPV6FL_xzAmS1tBYltSYq0t_4amk2J3J41J-6_VOfCbdSYxw/viewform?usp=header",
-    "volleyball": "https://forms.gle/M3B3kUb42kMkeVQp7",
+    "volleyball": "https://forms.gle/wjVGa7Y2YhsTnF1E8",
     "basketball": "https://docs.google.com/forms/d/e/1FAIpQLSf9iXrVTR30VqUe4vkGb4foNtchGjeytR1G1zIKoxWM-2mKoA/viewform?usp=header",
     "kabaddi": "https://docs.google.com/forms/d/e/1FAIpQLSdr1X2hlBSeSGKqY172ee275ZylfCE9LR13Dd7byQilUr6SDQ/viewform?usp=header",
     "carrom": "https://docs.google.com/forms/d/e/1FAIpQLSdmFBy1oeXGtWKin_AiW4Z17LgVWO8I7vrcMBLqeNNRBXDk9g/viewform?usp=header",
