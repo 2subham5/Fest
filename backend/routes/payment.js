@@ -490,7 +490,7 @@ function getRegistrationForm(eventName, teamName) {
     "ocean jam (battle of the bands)": "https://forms.gle/nJNUVaTPuSLZLCTCA",
     "syncopation (dance) - group": "https://forms.gle/k78LjT4S8ZqFubBs7",
     "syncopation (dance) - solo": "https://forms.gle/wmH7Jq3yv9f1yn5v8",
-    "Syncopation (dance) - duet": "https://forms.gle/8jTjmhLiUAaz4DwC8",
+    "syncopation (dance) - duet": "https://forms.gle/8jTjmhLiUAaz4DwC8",
     "the deep blue script (drama)": "https://forms.gle/5t8zqVVRaWohUhH66",
     "geek cheek gala (cosplay)": "https://forms.gle/phnNZAchKdGVjBAp8",
     "rhythmixia (instrumental - solo)": "https://forms.gle/wmH7Jq3yv9f1yn5v8",
