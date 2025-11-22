@@ -26,7 +26,8 @@ const data = [
       { name: "Throw Ball", isPaid: true, paymentAmount: 800, gender: "both", team: false },
       { name: "100m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
       { name: "200m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      { name: "Relay Race", isPaid: true, paymentAmount: 400, gender: "both", team: true }
+      { name: "Relay Race", isPaid: true, paymentAmount: 400, gender: "both", team: true },
+        { name: "Marathon", isPaid: false,gender:"both", team: false }
     ]
   },
   {
@@ -42,7 +43,7 @@ const data = [
       { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
       {name:"Last To Leave", isPaid:true, paymentAmount:50,unit:"per person", team:false},
       {name:"You Laugh You Loose", isPaid:true, paymentAmount:50,unit:"per person", team:false}
-
+    
     ]
   },
   {
