@@ -63,7 +63,7 @@ export default function App() {
               <Route path="/eventData" element={<EventPaymentTable />} />
 
               {/* Event pages */}
-              {/* <Route path="/sports" element={<SportsEvent />} /> */}
+              <Route path="/sports" element={<SportsEvent />} />
               <Route path="/literary" element={<Literary />} />
               <Route path="/informal" element={<Informal />} />
               {/* <Route path="/esports" element={<Esports />} /> */}
