@@ -68,7 +68,7 @@ export default function App() {
               <Route path="/informal" element={<Informal />} />
               {/* <Route path="/esports" element={<Esports />} /> */}
               <Route path="/creative" element={<Creative />} />
-              {/* <Route path="/cultural" element={<Cultural />} /> */}
+              <Route path="/cultural" element={<Cultural />} />
               <Route path="/metastasiss" element={<MetaStasiss />} />
             </Routes>
           </main>
