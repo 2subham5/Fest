@@ -69,7 +69,7 @@ export default function App() {
               {/* <Route path="/esports" element={<Esports />} /> */}
               <Route path="/creative" element={<Creative />} />
               <Route path="/cultural" element={<Cultural />} />
-              <Route path="/metastasiss" element={<MetaStasiss />} />
+              {/* <Route path="/metastasiss" element={<MetaStasiss />} /> */}
             </Routes>
           </main>
 

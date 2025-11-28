@@ -34,13 +34,13 @@ const data = [
     categoryName: "InformalEvent",
     subcategories: [
       // { name: "Treasure Hunt", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      { name: "Escape Room", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
+      // { name: "Escape Room", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       { name: "Paper Fold", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      // { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
       { name: "Bottle Flip", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
       { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
       { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
+      // { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
       {name:"Last To Leave", isPaid:true, paymentAmount:50,unit:"per person", team:false},
       {name:"You Laugh You Loose", isPaid:true, paymentAmount:50,unit:"per person", team:false}
     
