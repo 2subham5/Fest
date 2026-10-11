@@ -11,6 +11,7 @@ const VideoLogoComponent = () => {
           loop
           muted
           playsInline
+          preload="metadata"
         >
           <source src="/BG-Video.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
