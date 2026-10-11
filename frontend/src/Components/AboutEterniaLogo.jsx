@@ -20,7 +20,7 @@ const AboutEterniaLogo = () => {
 
 
               {/* Replace this placeholder with your actual logo: */}
-              <img src="/logo.png" alt="ETERNIA Logo" className="w-200 h-200 object-contain" />
+              <img src="/logo3.png" alt="ETERNIA Logo" className="w-200 h-200 object-contain" />
             </div>
           </div>
 
@@ -37,7 +37,7 @@ const AboutEterniaLogo = () => {
             {/* Description paragraphs */}
             <div className="space-y-4 text-gray-200 leading-relaxed">
               <p className="text-lg">
-                The logo of ETERNIA 2025, themed “NEXUS,” beautifully captures the spirit of connection and harmony across realms. The design unites elements of land and sea, tradition and modernity — a celebration of how diverse worlds can merge into one vibrant whole.
+                The logo of ETERNIA 2026, themed “NEXUS,” beautifully captures the spirit of connection and harmony across realms. The design unites elements of land and sea, tradition and modernity — a celebration of how diverse worlds can merge into one vibrant whole.
 
               </p>
 

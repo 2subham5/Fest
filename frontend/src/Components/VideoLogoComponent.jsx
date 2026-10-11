@@ -34,8 +34,8 @@ const VideoLogoComponent = () => {
               height: "80vh"
             }}>
               <img
-                src="/logo.png"
-                alt="ETERNIA 2025"
+                src="/logo3.png"
+                alt="ETERNIA 2026"
                 className="object-contain rounded-full"
                 style={{
                   width: "80vw",
@@ -50,7 +50,7 @@ const VideoLogoComponent = () => {
                 <div className="text-4xl font-bold text-slate-800 mb-2">
                   ETERNIA
                 </div>
-                <div className="text-xl text-red-600 font-semibold">2025</div>
+                <div className="text-xl text-red-600 font-semibold">2026</div>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ const VideoLogoComponent = () => {
       <div className="relative z-20 text-center mb-8">
         <h1 className="typing-title text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-wide mb-4 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent drop-shadow-2xl">
           ETERNIA
-          <span className="block md:inline">&nbsp;2025</span>
+          <span className="block md:inline">&nbsp;2026</span>
         </h1>
 
         <p className="text-xl md:text-2xl tracking-widest text-purple-300 font-medium mb-4">
