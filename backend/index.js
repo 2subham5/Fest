@@ -13,11 +13,21 @@ app.use(cors())
 app.use(express.json());
 // ✅ Parse URL-encoded bodies (important for PayU)
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/user',userRouter);
-app.use('/payment',paymentRouter);
-app.use('/events',eventRouter);
+app.use('/user', userRouter);
+app.use('/payment', paymentRouter);
+app.use('/events', eventRouter);
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), {
+    maxAge: '7d', // Cache static images, PDFs, and video for 7 days
+    setHeaders: (res, filePath) => {
+        // Keep index.html fresh, but cache heavy assets
+        if (filePath.endsWith('.html')) {
+            res.setHeader('Cache-Control', 'no-cache');
+        }
+    }
+}));
+
 app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
@@ -29,14 +39,14 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true,
     family: 4,
 })
-.then(() => {
-    console.log("✅ MongoDB connected successfully");
-})
-.catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
-});
+    .then(() => {
+        console.log("✅ MongoDB connected successfully");
+    })
+    .catch((err) => {
+        console.error("❌ MongoDB connection error:", err);
+    });
 
 
-app.listen(3000, (req,res)=>{
+app.listen(3000, (req, res) => {
     console.log("App listen at port 3000");
 })
