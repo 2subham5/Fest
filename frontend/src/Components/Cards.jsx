@@ -12,7 +12,7 @@ const Cards = () => {
       title: "Opening Ceremony",
       description: "The grand opening with spectacular performances",
       size: "large", // large, medium, small
-      src : "/card2.jpg",
+      src: "/card2.jpg",
       delay: 100
     },
     {
@@ -20,7 +20,7 @@ const Cards = () => {
       title: "Music",
       description: "Performances",
       size: "medium",
-      src : "/card3.jpg",
+      src: "/card3.jpg",
       delay: 200
     },
     {
@@ -28,7 +28,7 @@ const Cards = () => {
       title: "Music Concert",
       description: "Electrifying musical performances",
       size: "medium",
-      src : "/card9.jpg",
+      src: "/card9.jpg",
       delay: 300
     },
     {
@@ -36,7 +36,7 @@ const Cards = () => {
       title: "Art Exhibition",
       description: "Symphony on display",
       size: "large",
-      src : "/card10.jpg",
+      src: "/card10.jpg",
       delay: 400
     },
     {
@@ -44,7 +44,7 @@ const Cards = () => {
       title: "Moments",
       description: "Feel Good moments",
       size: "medium",
-      src : "/card1.jpg",
+      src: "/card1.jpg",
       delay: 500
     },
     {
@@ -52,7 +52,7 @@ const Cards = () => {
       title: "Stage Performance",
       description: "Music, crowd and all",
       size: "medium",
-      src : "/card8.jpg",
+      src: "/card8.jpg",
       delay: 600
     },
     {
@@ -60,7 +60,7 @@ const Cards = () => {
       title: "Crowd Moments",
       description: "Audience enjoying the festivities",
       size: "small",
-      src : "/card5.jpg",
+      src: "/card5.jpg",
       delay: 700
     }
   ];
@@ -101,22 +101,22 @@ const Cards = () => {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-20  overflow-hidden"
     >
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-900/10 to-transparent" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
-       <div className="relative z-10 text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-200 via-white to-blue-200 bg-clip-text text-transparent">
-          Glimpses from Festivibe 2024
-        </h2>
-        <div className="mt-3 w-24 h-1 mx-auto bg-gradient-to-r from-purple-400 to-blue-500 rounded-full" />
-      </div>
+        <div className="relative z-10 text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-200 via-white to-blue-200 bg-clip-text text-transparent">
+            Glimpses from Festivibe 2025
+          </h2>
+          <div className="mt-3 w-24 h-1 mx-auto bg-gradient-to-r from-purple-400 to-blue-500 rounded-full" />
+        </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
@@ -127,8 +127,8 @@ const Cards = () => {
                 ${getCardSize(image.size)}
                 group cursor-pointer relative overflow-hidden rounded-2xl bg-gray-200 shadow-lg
                 transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25
-                ${isVisible 
-                  ? 'opacity-100 translate-y-0' 
+                ${isVisible
+                  ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-20'
                 }
               `}
@@ -140,22 +140,22 @@ const Cards = () => {
             >
               {/* Image placeholder - replace with actual images */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-400/30 via-blue-500/30 to-purple-600/30" />
-              
+
               {/* Placeholder pattern */}
               {/* <div className="absolute inset-0 opacity-20">
                 <div className="w-full h-full bg-gradient-to-br from-white/5 via-transparent to-white/10" />
               </div> */}
 
               {/* Replace above placeholders with actual images: */}
-              <img 
-                src={image.src} 
+              <img
+                src={image.src}
                 alt={image.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
+
               {/* Content overlay */}
               <div className={`
                 absolute bottom-0 left-0 right-0 p-4 text-white
@@ -170,8 +170,8 @@ const Cards = () => {
               {/* Hover glow effect */}
               <div className={`
                 absolute inset-0 rounded-2xl transition-all duration-300
-                ${hoveredCard === image.id 
-                  ? 'bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20' 
+                ${hoveredCard === image.id
+                  ? 'bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20'
                   : ''
                 }
               `} />
@@ -195,9 +195,9 @@ const Cards = () => {
 
         {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-3 h-3 bg-cyan-400 rounded-full opacity-60 animate-pulse" />
-        <div className="absolute top-40 right-20 w-2 h-2 bg-purple-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}} />
-        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-50 animate-pulse" style={{animationDelay: '2s'}} />
-        <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-purple-300 rounded-full opacity-30 animate-pulse" style={{animationDelay: '0.5s'}} />
+        <div className="absolute top-40 right-20 w-2 h-2 bg-purple-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-purple-300 rounded-full opacity-30 animate-pulse" style={{ animationDelay: '0.5s' }} />
       </div>
 
       {/* Subtle background pattern */}

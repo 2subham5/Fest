@@ -37,21 +37,21 @@ const AboutEterniaLogo = () => {
             {/* Description paragraphs */}
             <div className="space-y-4 text-gray-200 leading-relaxed">
               <p className="text-lg">
-                The logo of ETERNIA 2026, themed “NEXUS,” beautifully captures the spirit of connection and harmony across realms. The design unites elements of land and sea, tradition and modernity — a celebration of how diverse worlds can merge into one vibrant whole.
+                The logo of ETERNIA 2026, themed “THE MYSTIC FUSION,” symbolizes the harmony of opposites and the magical convergence of diverse worlds. At its heart, the Yin-Yang represents the eternal balance between light and darkness, chaos and serenity, while the intertwining branches and delicate blossoms signify growth, interconnectedness, and renewal.
 
               </p>
 
               <p className="text-lg">
 
-                The flowing waves and mermaid symbolize depth, freedom, and the endless rhythm of creativity, while the turtle embodies endurance and wisdom — timeless values that ground every festivity. On the other side, the torii gate and cherry blossoms reflect cultural elegance, renewal, and the serenity of tradition meeting imagination.
+                The celestial moon and stars evoke mystery, imagination, and infinite possibilities, while the intricate circular patterns reflect unity and eternity. Together, these elements embody the spirit of THE MYSTIC FUSION — where art meets science, tradition embraces innovation, and diverse talents unite in an extraordinary celebration of creativity, culture, and endless possibilities.
 
               </p>
 
-              <p className="text-lg">
+              {/* <p className="text-lg">
                 The interplay of aqua blue and crimson red represents the perfect balance between calm and energy, mirroring ETERNIA’s essence — where every idea, performance, and emotion connects seamlessly.
                 Together, these elements form the NEXUS — a radiant intersection of art, culture, and celebration, where every wave of joy and every spark of creativity flows into one eternal rhythm.
 
-              </p>
+              </p> */}
             </div>
 
             {/* Decorative elements */}

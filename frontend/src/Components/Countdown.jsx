@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Countdown = () => {
-    const targetDate = new Date("November 26, 2025 00:00:00").getTime();
+    const targetDate = new Date("November 25, 2026 00:00:00").getTime();
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
     function getTimeLeft() {

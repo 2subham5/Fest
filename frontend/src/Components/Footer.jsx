@@ -5,18 +5,18 @@ const Footer = () => {
     <footer className="border-t border-solid border-t-[var(--secondary-color)]">
       <div className="container mx-auto px-10 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
-        <div>
-             <p className="text-[var(--text-secondary)] text-sm">
-           Organised by all India Institute Of Medical Sciences (AIIMS) Guwahati
-          </p>
-          <br></br>
-              <p className="text-[var(--text-secondary)] text-sm">
-           Address - AIIMS Guwahati, Silbharal, Changsari District - Kamrup, Pincode-781101, Assam
-          </p>
-        </div>
+          <div>
+            <p className="text-[var(--text-secondary)] text-sm">
+              Organised by all India Institute Of Medical Sciences (AIIMS) Guwahati
+            </p>
+            <br></br>
+            <p className="text-[var(--text-secondary)] text-sm">
+              Address - AIIMS Guwahati, Silbharal, Changsari District - Kamrup, Pincode-781101, Assam
+            </p>
+          </div>
           {/* Organizer text */}
-       
-         
+
+
           {/* Social icons */}
           <div className="flex justify-center gap-4">
             {/* <a
@@ -88,7 +88,7 @@ const Footer = () => {
               className="text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors"
               href="#"
             >
-              Contact Us - +917429775590 
+              Contact Us - +919875379386
             </a>
             <a
               className="text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors"

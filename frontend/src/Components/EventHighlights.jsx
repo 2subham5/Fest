@@ -44,12 +44,12 @@ const EventHighlights = () => {
       image: "https://cdn.pixabay.com/photo/2023/01/21/12/04/bharatanatyam-7733729_1280.jpg",
       route: "/cultural"
     },
-    {
-      id:7,
-      title: "Meta-Stasiss",
-       image: "/METASTASISS.png",
-      route: "/metastasiss"
-    }
+    // {
+    //   id:7,
+    //   title: "Meta-Stasiss",
+    //    image: "/METASTASISS.png",
+    //   route: "/metastasiss"
+    // }
   ];
 
   const handleClick = (event) => {
@@ -200,7 +200,7 @@ const EventHighlights = () => {
           >
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400/30 to-cyan-400/30 opacity-0 group-hover:opacity-40 blur-lg transition-all duration-300 pointer-events-none"></div>
             <span className="relative text-white text-xl font-semibold tracking-tight">
-               Accommodation
+              Accommodation
             </span>
           </button>
 
