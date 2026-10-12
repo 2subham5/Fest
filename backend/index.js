@@ -9,7 +9,26 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const app = express();
 dotenv.config();
-app.use(cors())
+// app.use(cors())
+const allowedOrigins = [
+    'https://eternia.it.com',
+    'https://aiimsguwahatieternia2025.com',
+    'http://localhost:3000', // Your unified frontend + backend
+    'http://localhost:5173'  // In case you run Vite dev mode
+];
+
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Blocked by CORS'));
+        }
+    },
+    credentials: true
+}));
+
 app.use(express.json());
 // ✅ Parse URL-encoded bodies (important for PayU)
 app.use(bodyParser.urlencoded({ extended: true }));
