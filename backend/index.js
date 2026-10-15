@@ -12,10 +12,14 @@ dotenv.config();
 // app.use(cors())
 const allowedOrigins = [
     'https://eternia.it.com',
-    'https://aiimsguwahatieternia2025.com',
-    'http://localhost:3000', // Your unified frontend + backend
-    'http://localhost:5173'  // In case you run Vite dev mode
+    'https://www.eternia.it.com',
+    'https://secure.payu.in',
+    'https://test.payu.in',
+    'http://localhost:3000',
+    'http://localhost:5173'
 ];
+
+
 
 
 app.use(cors({

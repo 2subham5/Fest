@@ -394,7 +394,7 @@ async function sendPaymentEmail(toEmail, uniqueId) {
   try {
     if (!uniqueId) throw new Error("Unique ID is missing");
 
-    const qrUrl = `https://aiimsguwahatieternia2025.com/expire?uniqueId=${uniqueId}`;
+    const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
 
     // Generate QR code as a buffer
     const qrCodeBuffer = await QRCode.toBuffer(qrUrl, {
