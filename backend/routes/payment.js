@@ -165,7 +165,7 @@ router.post('/pay', async (req, res) => {
       email,
       phone: contact,
       surl: `https://eternia.it.com/payment/verifyPayment`,
-      furl: `https://eternia.it.com/verifyPayment`,
+      furl: `https://eternia.it.com/payment/verifyPayment`,
       hash,
       udf1: '',
       udf2: '',
