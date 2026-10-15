@@ -26,8 +26,8 @@ const data = [
       // { name: "Throw Ball", isPaid: true, paymentAmount: 800, gender: "both", team: false },
       // { name: "100m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
       // { name: "200m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      // { name: "Relay Race", isPaid: true, paymentAmount: 400, gender: "both", team: true },
-        { name: "Marathon", isPaid: false,gender:"both", team: false }
+      { name: "Relay Race", isPaid: true, paymentAmount: 1, gender: "both", team: true },
+      { name: "Marathon", isPaid: false, gender: "both", team: false }
     ]
   },
   {
@@ -41,9 +41,9 @@ const data = [
       { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
       { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
       // { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
-      {name:"Last To Leave", isPaid:true, paymentAmount:50,unit:"per person", team:false},
-      {name:"You Laugh You Loose", isPaid:true, paymentAmount:50,unit:"per person", team:false}
-    
+      { name: "Last To Leave", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      { name: "You Laugh You Loose", isPaid: true, paymentAmount: 50, unit: "per person", team: false }
+
     ]
   },
   {
@@ -106,23 +106,23 @@ const data = [
     ]
   },
   {
-  categoryName: "META-STASISS",
-  subcategories: [
-    // SOLO EVENTS
-    { name: "CODE Dx (Solo)", isPaid: true, paymentAmount: 200, unit: "per person", team: false },
-    { name: "MED-CHRONICLES", isPaid: false, team:false},
-    { name: "Did You Know (Online Reel Competition)", isPaid: false, team:false},
+    categoryName: "META-STASISS",
+    subcategories: [
+      // SOLO EVENTS
+      { name: "CODE Dx (Solo)", isPaid: true, paymentAmount: 200, unit: "per person", team: false },
+      { name: "MED-CHRONICLES", isPaid: false, team: false },
+      { name: "Did You Know (Online Reel Competition)", isPaid: false, team: false },
 
-    // DUET EVENTS
-    { name: "RESEARCH SHARK TANK (Duet)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-    { name: "CODE Dx (Duet)", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-    { name: "MED CHARADES", isPaid: true, paymentAmount: 50, unit: "per person", team: true },
+      // DUET EVENTS
+      { name: "RESEARCH SHARK TANK (Duet)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      { name: "CODE Dx (Duet)", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      { name: "MED CHARADES", isPaid: true, paymentAmount: 50, unit: "per person", team: true },
 
-    // GROUP EVENTS
-    { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-    { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
-  ]
-}
+      // GROUP EVENTS
+      { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
+    ]
+  }
 ];
 
 // ✅ Connect and replace existing categories

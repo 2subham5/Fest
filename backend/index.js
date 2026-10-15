@@ -9,15 +9,15 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const app = express();
 dotenv.config();
-// app.use(cors())
-const allowedOrigins = [
-    'https://eternia.it.com',
-    'https://www.eternia.it.com',
-    'https://secure.payu.in',
-    'https://test.payu.in',
-    'http://localhost:3000',
-    'http://localhost:5173'
-];
+// // app.use(cors())
+// const allowedOrigins = [
+//     'https://eternia.it.com',
+//     'https://www.eternia.it.com',
+//     'https://secure.payu.in',
+//     'https://test.payu.in',
+//     'http://localhost:3000',
+//     'http://localhost:5173'
+// ];
 
 
 
