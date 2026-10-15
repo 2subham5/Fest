@@ -309,8 +309,8 @@ router.post("/sportspay", async (req, res) => {
       firstname: teamName || individualName,
       email,
       phone: mobileNumber,
-      surl: `https://eternia.it.com/payment/eventverifyPayment`,
-      furl: `https://eternia.it.com/payment/eventverifyPayment`,
+      surl: `https://eternia.it.com/payment/verifyPayment`,
+      furl: `https://eternia.it.com/payment/verifyPayment`,
       hash,
       udf1: teamNameConst,
       udf2: subCategory || "",
@@ -394,7 +394,7 @@ async function sendPaymentEmail(toEmail, uniqueId) {
   try {
     if (!uniqueId) throw new Error("Unique ID is missing");
 
-    const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
+    const qrUrl = `https://aiimsguwahatieternia2025.com/expire?uniqueId=${uniqueId}`;
 
     // Generate QR code as a buffer
     const qrCodeBuffer = await QRCode.toBuffer(qrUrl, {
