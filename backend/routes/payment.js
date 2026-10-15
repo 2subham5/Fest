@@ -164,8 +164,8 @@ router.post('/pay', async (req, res) => {
       firstname: name,
       email,
       phone: contact,
-      surl: `https://aiimsguwahatieternia2025.com/payment/verifyPayment`,
-      furl: `https://aiimsguwahatieternia2025.com/payment/verifyPayment`,
+      surl: `https://eternia.it.com/payment/verifyPayment`,
+      furl: `https://eternia.it.com/verifyPayment`,
       hash,
       udf1: '',
       udf2: '',
@@ -288,7 +288,7 @@ router.post("/sportspay", async (req, res) => {
       await paymentDoc.save();
     }
     if (!amountINR || amountINR === 0) {
-         paymentDoc.status = "issued";
+      paymentDoc.status = "issued";
       await paymentDoc.save();
       eventPaymentEmail(email, firstname, subCategory, teamName, amount);
       return res
@@ -309,8 +309,8 @@ router.post("/sportspay", async (req, res) => {
       firstname: teamName || individualName,
       email,
       phone: mobileNumber,
-      surl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
-      furl: `https://aiimsguwahatieternia2025.com/payment/eventverifyPayment`,
+      surl: `https://eternia.it.com/payment/eventverifyPayment`,
+      furl: `https://eternia.it.com/payment/eventverifyPayment`,
       hash,
       udf1: teamNameConst,
       udf2: subCategory || "",
@@ -394,7 +394,7 @@ async function sendPaymentEmail(toEmail, uniqueId) {
   try {
     if (!uniqueId) throw new Error("Unique ID is missing");
 
-    const qrUrl = `https://aiimsguwahatieternia2025.com/expire?uniqueId=${uniqueId}`;
+    const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
 
     // Generate QR code as a buffer
     const qrCodeBuffer = await QRCode.toBuffer(qrUrl, {
@@ -514,13 +514,13 @@ function getRegistrationForm(eventName, teamName) {
     "karaoke diagnosis": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "spelling bee": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
     "meme literature": "https://docs.google.com/forms/d/e/1FAIpQLSeZR4J52LUb0VSgm2OJ8Tvc4Xe_VGLn22dQ9LAxAyW4MBtT3A/viewform?usp=dialog",
-     "sai sports quiz": "https://forms.gle/tctgQTewiHX2UamQ6",
+    "sai sports quiz": "https://forms.gle/tctgQTewiHX2UamQ6",
     // metastasiss
-    "code dx (solo)":"https://forms.gle/34mqhro4PrT3oFue6",
-    "med-chronicles":"https://forms.gle/5ZSf6c9G2r854VLN8",
-    "did you know (online reel competition)":"https://forms.gle/jmV2Ca4qiS3fBRc77",
+    "code dx (solo)": "https://forms.gle/34mqhro4PrT3oFue6",
+    "med-chronicles": "https://forms.gle/5ZSf6c9G2r854VLN8",
+    "did you know (online reel competition)": "https://forms.gle/jmV2Ca4qiS3fBRc77",
     "research shark tank (duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
-    "med charades":"https://forms.gle/d1zfLqCMTqFUjUus9",
+    "med charades": "https://forms.gle/d1zfLqCMTqFUjUus9",
 
   };
 

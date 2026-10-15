@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const [paymentFailed, setPaymentFailed] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const paymentUrl = `https://aiimsguwahatieternia2025.com/expire?uniqueId=${uniqueId}`;
+  const paymentUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
 
   // ✅ Check PayU redirect result
   useEffect(() => {
@@ -238,11 +238,10 @@ const RegisterPage = () => {
                     onChange={handleInputChange}
                     onBlur={handleBlur}
                     placeholder="Enter your name"
-                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${
-                      errors.name
+                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.name
                         ? "border-red-500 focus:ring-red-500 bg-red-900/20"
                         : "border-gray-600 focus:ring-purple-500"
-                    }`}
+                      }`}
                   />
                   {errors.name && (
                     <div className="mt-2 p-2 bg-red-900/30 border border-red-500/50 rounded text-red-400 text-sm">
@@ -263,11 +262,10 @@ const RegisterPage = () => {
                     onChange={handleInputChange}
                     onBlur={handleBlur}
                     placeholder="Enter your email"
-                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${
-                      errors.email
+                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.email
                         ? "border-red-500 focus:ring-red-500 bg-red-900/20"
                         : "border-gray-600 focus:ring-purple-500"
-                    }`}
+                      }`}
                   />
                   {errors.email && (
                     <div className="mt-2 p-2 bg-red-900/30 border border-red-500/50 rounded text-red-400 text-sm">
@@ -289,11 +287,10 @@ const RegisterPage = () => {
                     onBlur={handleBlur}
                     placeholder="Enter your 10-digit mobile number"
                     maxLength="10"
-                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${
-                      errors.contact
+                    className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.contact
                         ? "border-red-500 focus:ring-red-500 bg-red-900/20"
                         : "border-gray-600 focus:ring-purple-500"
-                    }`}
+                      }`}
                   />
                   {errors.contact && (
                     <div className="mt-2 p-2 bg-red-900/30 border border-red-500/50 rounded text-red-400 text-sm">
