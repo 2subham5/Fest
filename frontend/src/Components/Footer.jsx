@@ -92,6 +92,12 @@ const Footer = () => {
             </a>
             <a
               className="text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors"
+              href="mailto:[mesubham25@gmail.com]"
+            >
+              Developed by : Subham
+            </a>
+            <a
+              className="text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors"
               href="/terms"
             >
               TERMS & CONDITIONS

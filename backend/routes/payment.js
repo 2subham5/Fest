@@ -214,22 +214,23 @@ router.post("/sportspay", async (req, res) => {
     } = validatedData;
 
     // ✅ Check for existing payment with same email and issued status
-    // const existingIssuedPayment = await EventPayment.findOne({
-    //   email,
-    //   status: { $in: ["issued", "expired"] },
-    // });
+    const existingIssuedPayment = await EventPayment.findOne({
+      email,
+      subCategory,
+      status: { $in: ["issued", "expired"] },
+    });
 
-    // if (existingIssuedPayment) {
-    //   return res
-    //     .status(400)
-    //     .json(
-    //       new Response(
-    //         400,
-    //         "This email has already completed a sports payment.",
-    //         false
-    //       )
-    //     );
-    // }
+    if (existingIssuedPayment) {
+      return res
+        .status(400)
+        .json(
+          new Response(
+            400,
+            "This email has already been issued for the " + subCategory + " event.",
+            false
+          )
+        );
+    }
 
     // ✅ Generate unique transaction ID
     const txnid = uuidv4().replace(/-/g, "").slice(0, 20);
@@ -309,8 +310,8 @@ router.post("/sportspay", async (req, res) => {
       firstname: teamName || individualName,
       email,
       phone: mobileNumber,
-      surl: `https://eternia.it.com/payment/verifyPayment`,
-      furl: `https://eternia.it.com/payment/verifyPayment`,
+      surl: "https://eternia.it.com/payment/eventverifyPayment",
+      furl: "https://eternia.it.com/payment/eventverifyPayment",
       hash,
       udf1: teamNameConst,
       udf2: subCategory || "",
@@ -549,7 +550,7 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
     const mailOptions = {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
-      subject: "ETERNIA 2025 || Congratulations! Payment Successful.Mandatory to fill the google form. 🎉",
+      subject: "ETERNIA 2026 || Congratulations! Payment Successful.Mandatory to fill the google form. 🎉",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           
