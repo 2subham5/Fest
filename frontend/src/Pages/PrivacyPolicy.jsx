@@ -4,23 +4,23 @@ const PrivacyPolicy = () => {
     <section className="relative min-h-screen py-20 text-white overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-transparent to-blue-900/30 pointer-events-none" />
-      
+
       <div className="container mx-auto px-6 relative z-10 max-w-5xl">
         <div className="space-y-8">
-          
+
           {/* Header */}
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-200 via-white to-blue-200 bg-clip-text text-transparent">
               PRIVACY POLICY
             </h2>
-            <p className="text-gray-400 text-sm">Last Updated: October 2025</p>
+            <p className="text-gray-400 text-sm">Last Updated: October 2026</p>
             <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full mx-auto mt-4" />
           </div>
 
           {/* Introduction */}
           <div className="text-gray-200 leading-relaxed">
             <p className="text-lg">
-              Your privacy is important to us. This Privacy Policy explains how ETERNIA 2025, organized by AIIMS Guwahati, collects, uses, and protects your personal information.
+              Your privacy is important to us. This Privacy Policy explains how ETERNIA 2026, organized by AIIMS Guwahati, collects, uses, and protects your personal information.
             </p>
           </div>
 
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
               <h3 className="text-2xl font-semibold mb-3 text-purple-300">2. How We Use Your Information</h3>
               <p className="text-gray-200 leading-relaxed">
-                We use your information to process registrations and event entries, send updates and notifications regarding ETERNIA 2025, generate participation certificates and event communication, and improve user experience and fest management.
+                We use your information to process registrations and event entries, send updates and notifications regarding ETERNIA 2026, generate participation certificates and event communication, and improve user experience and fest management.
               </p>
             </div>
 
@@ -76,8 +76,8 @@ const PrivacyPolicy = () => {
             </div>
           </div>
         </div>
-        </div>
-        </section>
+      </div>
+    </section>
   )
 };
 export default PrivacyPolicy;

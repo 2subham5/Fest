@@ -4,16 +4,16 @@ const RefundPolicy = () => {
     <section className="relative min-h-screen py-20 text-white overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-transparent to-blue-900/30 pointer-events-none" />
-      
+
       <div className="container mx-auto px-6 relative z-10 max-w-5xl">
         <div className="space-y-8">
-          
+
           {/* Header */}
           <div className="text-center">
             <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-200 via-white to-blue-200 bg-clip-text text-transparent">
               REFUND & CANCELLATION POLICY
             </h2>
-            <p className="text-gray-400 text-sm">Last Updated: October 2025</p>
+            <p className="text-gray-400 text-sm">Last Updated: October 2026</p>
             <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full mx-auto mt-4" />
           </div>
 
@@ -62,8 +62,8 @@ const RefundPolicy = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-purple-400 font-semibold min-w-[80px]">Website:</span>
-                  <a href="https://aiimsguwahatiEternia2025.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300 transition-colors">
-                    https://aiimsguwahatiEternia2025.com
+                  <a href="https://eternia.it.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300 transition-colors">
+                    https://eternia.it.com
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
@@ -74,8 +74,8 @@ const RefundPolicy = () => {
             </div>
           </div>
         </div>
-        </div>
-        </section>
+      </div>
+    </section>
   )
 };
 export default RefundPolicy;

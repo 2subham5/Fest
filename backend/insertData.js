@@ -5,29 +5,33 @@ const { Category } = require("./db/db");
 
 const data = [
   {
-    categoryName: "Sports",
-    subcategories: [
-      // { name: "Football", isPaid: true, paymentAmount: 1800, gender: "male", team: true },
-      // { name: "Cricket", isPaid: true, paymentAmount: 1800, gender: "male", team: true },
-      // { name: "Volleyball", isPaid: true, paymentAmount: 800, gender: "both", team: true },
-      // { name: "Basketball", isPaid: true, paymentAmount: 800, gender: "both", team: true },
-      // { name: "Kabaddi", isPaid: true, paymentAmount: 1000, gender: "male", team: true },
-      // { name: "Carrom", isPaid: true, paymentAmount: 150, gender: "both", team: false },
-      // { name: "Chess", isPaid: true, paymentAmount: 150, gender: "both", team: false },
-      // { name: "Badminton (Singles)", isPaid: true, paymentAmount: 200, gender: "both", team: false },
-      // { name: "Badminton (Doubles)", isPaid: true, paymentAmount: 400, gender: "both", team: true },
-      // { name: "Badminton (Mixed Doubles)", isPaid: true, paymentAmount: 400, gender: "both", team: true },
-      // { name: "Table Tennis (Singles)", isPaid: true, paymentAmount: 200, gender: "both", team: false },
-      // { name: "Table Tennis (Doubles)", isPaid: true, paymentAmount: 400, gender: "both", team: true },
-      // { name: "Lawn Tennis", isPaid: true, paymentAmount: 500, gender: "both", team: false },
-      // { name: "Arm Wrestling", isPaid: true, paymentAmount: 100, gender: "male", team: false },
-      // { name: "Shotput", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      // { name: "Discus Throw", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      // { name: "Throw Ball", isPaid: true, paymentAmount: 800, gender: "both", team: false },
-      // { name: "100m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      // { name: "200m Sprint", isPaid: true, paymentAmount: 100, gender: "both", team: false },
-      { name: "Relay Race", isPaid: true, paymentAmount: 5, gender: "both", team: true },
-      { name: "Marathon", isPaid: false, gender: "both", team: false }
+    "categoryName": "Sports",
+    "subcategories": [
+      { "name": "Volleyball (Boys)", "isPaid": true, "paymentAmount": 1600, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Volleyball (Girls)", "isPaid": true, "paymentAmount": 800, "gender": "female", "unit": "per team", "team": true },
+      { "name": "Cricket", "isPaid": true, "paymentAmount": 2000, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Football (Boys)", "isPaid": true, "paymentAmount": 2200, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Football (Girls)", "isPaid": true, "paymentAmount": 1500, "gender": "female", "unit": "per team", "team": true },
+      { "name": "Basketball (Boys)", "isPaid": true, "paymentAmount": 1200, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Basketball (Girls)", "isPaid": true, "paymentAmount": 900, "gender": "female", "unit": "per team", "team": true },
+      { "name": "Sprint Race (100m, 200m, 400m)", "isPaid": true, "paymentAmount": 199, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Relay Race", "isPaid": true, "paymentAmount": 400, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Long Jump", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "High Jump", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Shot Put", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Discus Throw", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Chess", "isPaid": true, "paymentAmount": 149, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Table Tennis (Singles)", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Table Tennis (Doubles)", "isPaid": true, "paymentAmount": 149, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Kho Kho", "isPaid": true, "paymentAmount": 799, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Badminton (Singles)", "isPaid": true, "paymentAmount": 199, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Badminton (Doubles)", "isPaid": true, "paymentAmount": 399, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Throw Ball", "isPaid": true, "paymentAmount": 799, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Kabaddi", "isPaid": true, "paymentAmount": 1800, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Carrom", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Lawn Tennis (Singles)", "isPaid": true, "paymentAmount": 499, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Lawn Tennis (Doubles)", "isPaid": true, "paymentAmount": 499, "gender": "both", "unit": "per team", "team": true },
+      { "name": "Arm Wrestling", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false }
     ]
   },
   {
@@ -35,59 +39,63 @@ const data = [
     subcategories: [
       // { name: "Treasure Hunt", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
       // { name: "Escape Room", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      { name: "Paper Fold", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-      { name: "Bottle Flip", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
-      { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
-      { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      // { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
-      { name: "Last To Leave", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "You Laugh You Loose", isPaid: true, paymentAmount: 50, unit: "per person", team: false }
+      // { name: "Paper Fold", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // // { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      // { name: "Bottle Flip", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
+      // { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
+      // { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      // // { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
+      // { name: "Last To Leave", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "You Laugh You Loose", isPaid: true, paymentAmount: 50, unit: "per person", team: false }
 
     ]
   },
   {
     categoryName: "Creative",
     subcategories: [
-      { name: "Poster", isPaid: true, paymentAmount: 50, team: false },
-      { name: "Tote Bag Painting", isPaid: true, paymentAmount: 150, team: false },
-      { name: "Face Painting", isPaid: true, paymentAmount: 100, team: false },
-      { name: "Photography", isPaid: true, paymentAmount: 100, team: false },
-      { name: "Origami", isPaid: true, paymentAmount: 50, team: false },
-      { name: "Stone Painting", isPaid: true, paymentAmount: 50, team: false },
-      { name: "Mix Media", isPaid: true, paymentAmount: 50, team: false }
+      // { name: "Poster", isPaid: true, paymentAmount: 50, team: false },
+      // { name: "Tote Bag Painting", isPaid: true, paymentAmount: 150, team: false },
+      // { name: "Face Painting", isPaid: true, paymentAmount: 100, team: false },
+      // { name: "Photography", isPaid: true, paymentAmount: 100, team: false },
+      // { name: "Origami", isPaid: true, paymentAmount: 50, team: false },
+      // { name: "Stone Painting", isPaid: true, paymentAmount: 50, team: false },
+      // { name: "Mix Media", isPaid: true, paymentAmount: 50, team: false }
     ]
   },
   {
     categoryName: "Literary",
     subcategories: [
-      { name: "Kotoba No Umi: Creative Writing (Hindi & English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Shinsekai Stories: What-If Workshop (English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Monogatari No Yume: Storytelling (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Sakura Verses: Poem Recital (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Samurai Stand-Up: Stand-Up Comedy (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Kamikaze Clash: Turncoat Debate (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Shogun’s Council: Parliamentary Debate (Bilingual)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "The Exquizite: The Ultimate Medical Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "The Otaku Oracle: The Fandom Showdown", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "The Hokage Trials: The Sports Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "Hayakute Curious: The General Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "Karaoke Diagnosis: Provisional Diagnosis @ Bollywood/Hollywood!", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "SAI Sports Quiz", isPaid: false, team: false },
-      { name: "Meme Literature", isPaid: false, team: false }
+      // { name: "Kotoba No Umi: Creative Writing (Hindi & English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Shinsekai Stories: What-If Workshop (English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Monogatari No Yume: Storytelling (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Sakura Verses: Poem Recital (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Samurai Stand-Up: Stand-Up Comedy (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Kamikaze Clash: Turncoat Debate (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      // { name: "Shogun’s Council: Parliamentary Debate (Bilingual)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "The Exquizite: The Ultimate Medical Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "The Otaku Oracle: The Fandom Showdown", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "The Hokage Trials: The Sports Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "Hayakute Curious: The General Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "Karaoke Diagnosis: Provisional Diagnosis @ Bollywood/Hollywood!", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
+      // { name: "SAI Sports Quiz", isPaid: false, team: false },
+      // { name: "Meme Literature", isPaid: false, team: false }
     ]
   },
   {
     categoryName: "Esports",
     subcategories: [
-      { name: "BGMI", isPaid: true, paymentAmount: 250, unit: "per team", team: true },
-      { name: "CODM Multiplayer", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      { name: "CODM BR", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      { name: "eFootball", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "EAFC", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "Mobile Legends", isPaid: true, paymentAmount: 250, unit: "per team", team: true }
+      { name: "BGMI", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      { name: "BGMI TDM", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
+      { name: "CODM", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      { name: "E-Football", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      { name: "EAFC 26 / FIFA", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
+      { name: "Clash Royale", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      { name: "WorldGuessr", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+      { name: "Free Fire — Clash Squad", isPaid: true, paymentAmount: 50, unit: "per team", team: true },
+      { name: "Free Fire — Classic", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
     ]
   },
+
   {
     categoryName: "Cultural",
     subcategories: [
@@ -96,7 +104,7 @@ const data = [
       // { name: "Syncopation (Dance) - Group", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
       // { name: "Syncopation (Dance) - Solo", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       // { name: "The Deep Blue Script (Drama)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      { name: "Geek Cheek Gala(Cosplay)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
+      // { name: "Geek Cheek Gala(Cosplay)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       // { name: "Rhythmixia (Instrumental - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
       // { name: "Rhythmixia (Instrumental - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
       // { name: "Crescendo (Singing - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
@@ -109,18 +117,18 @@ const data = [
     categoryName: "META-STASISS",
     subcategories: [
       // SOLO EVENTS
-      { name: "CODE Dx (Solo)", isPaid: true, paymentAmount: 200, unit: "per person", team: false },
-      { name: "MED-CHRONICLES", isPaid: false, team: false },
-      { name: "Did You Know (Online Reel Competition)", isPaid: false, team: false },
+      // { name: "CODE Dx (Solo)", isPaid: true, paymentAmount: 200, unit: "per person", team: false },
+      // { name: "MED-CHRONICLES", isPaid: false, team: false },
+      // { name: "Did You Know (Online Reel Competition)", isPaid: false, team: false },
 
-      // DUET EVENTS
-      { name: "RESEARCH SHARK TANK (Duet)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-      { name: "CODE Dx (Duet)", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      { name: "MED CHARADES", isPaid: true, paymentAmount: 50, unit: "per person", team: true },
+      // // DUET EVENTS
+      // { name: "RESEARCH SHARK TANK (Duet)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      // { name: "CODE Dx (Duet)", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
+      // { name: "MED CHARADES", isPaid: true, paymentAmount: 50, unit: "per person", team: true },
 
-      // GROUP EVENTS
-      { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-      { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
+      // // GROUP EVENTS
+      // { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
+      // { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
     ]
   }
 ];
