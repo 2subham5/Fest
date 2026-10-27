@@ -103,8 +103,8 @@ const data = [
       { "name": "Syncopation: Mystic Mudras (Solo Classical) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
       { "name": "Syncopation: Rhythm Mirage (Solo Western) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
       { "name": "Syncopation: Sorcery in Sync (Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
-      { "name": "Syncopation: Astral Troupe (Group — 3–4 members) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
-      { "name": "Syncopation: Astral Troupe (Group — more than 5 members) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Syncopation: Astral Troupe (Group) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+
 
 
       // S.No. 2 — Rhythmixia (Instrumental Competition) [FREE]

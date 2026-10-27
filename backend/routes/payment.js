@@ -522,14 +522,15 @@ function getRegistrationForm(eventName, teamName) {
     // "did you know (online reel competition)": "https://forms.gle/jmV2Ca4qiS3fBRc77",
     // "research shark tank (duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
     // "med charades": "https://forms.gle/d1zfLqCMTqFUjUus9",
-    "Rhythmixia: Solo Western": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
-    "Rhythmixia: Duo Western [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
-    "Rhythmixia: Solo Classical [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
-    "Rhythmixia: Duo Classical [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "rhythmixia": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "rhythmixia: solo western": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "rhythmixia: duo western": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "rhythmixia: solo classical": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "rhythmixia: duo classical": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
   };
 
   for (const key in forms) {
-    if (name.includes(key)) { return forms[key]; }
+    if (name.includes(key.toLowerCase())) { return forms[key]; }
   }
 
   return teamName && teamName !== "" ? "https://forms.gle/ANPRCwxepFRfotSS7" : "https://forms.gle/x67zXrT6xPnAcikz7"
