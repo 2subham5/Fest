@@ -108,7 +108,7 @@ const data = [
 
 
       // S.No. 2 — Rhythmixia (Instrumental Competition) [FREE]
-      { "name": "Rhythmixia: Solo Western [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Rhythmixia: Solo Western", "isPaid": false, "unit": "per person", "team": false },
       { "name": "Rhythmixia: Duo Western [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
       { "name": "Rhythmixia: Solo Classical [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
       { "name": "Rhythmixia: Duo Classical [Screening Round]", "isPaid": false, "unit": "per team", "team": true },

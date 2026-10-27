@@ -522,7 +522,7 @@ function getRegistrationForm(eventName, teamName) {
     // "did you know (online reel competition)": "https://forms.gle/jmV2Ca4qiS3fBRc77",
     // "research shark tank (duet)": "https://forms.gle/kPCsQVh5fwVNQAUk6",
     // "med charades": "https://forms.gle/d1zfLqCMTqFUjUus9",
-    "Rhythmixia: Solo Western [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
+    "Rhythmixia: Solo Western": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
     "Rhythmixia: Duo Western [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
     "Rhythmixia: Solo Classical [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
     "Rhythmixia: Duo Classical [Screening Round]": "https://forms.gle/4ig4dx2mCQFXPcgQ6",
