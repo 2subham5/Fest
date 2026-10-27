@@ -64,7 +64,12 @@ router.get("/esports", async (req, res) => {
 router.get("/cultural", async (req, res) => {
   await getCategoryByName("Cultural", res);
 });
-router.get("/metastasiss", async(req,res)=>{
-  await getCategoryByName("META-STASISS",res);
-})
+// metastassis
+
+// router.get("/metastasiss", async (req, res) => {
+//   await getCategoryByName("META-STASISS", res);
+// })
+router.get("/womencell", async (req, res) => {
+  await getCategoryByName("Women Cell", res);
+});
 module.exports = router;

@@ -44,6 +44,12 @@ const EventHighlights = () => {
       image: "https://cdn.pixabay.com/photo/2023/01/21/12/04/bharatanatyam-7733729_1280.jpg",
       route: "/cultural"
     },
+    {
+      id: 7,
+      title: "Women Cell",
+      image: "/womencell.png",
+      route: "/womencell"
+    },
     // {
     //   id:7,
     //   title: "Meta-Stasiss",

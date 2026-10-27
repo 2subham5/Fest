@@ -24,6 +24,7 @@ import Esports from './Pages/Events/Esports';
 import Login from './Pages/Login';
 import EventPaymentTable from './Components/EventPaymentTable';
 import Cultural from './Pages/Events/Cultural';
+import WomenCell from './Pages/Events/WomenCell';
 import SpecialEvents from './Components/SpecialEvents';
 import MetaStasiss from './Pages/Events/MetaStasiss';
 export default function App() {
@@ -69,6 +70,8 @@ export default function App() {
               <Route path="/esports" element={<Esports />} />
               <Route path="/creative" element={<Creative />} />
               <Route path="/cultural" element={<Cultural />} />
+              <Route path="/womencell" element={<WomenCell />} />
+
               {/* <Route path="/metastasiss" element={<MetaStasiss />} /> */}
             </Routes>
           </main>

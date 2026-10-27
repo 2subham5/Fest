@@ -35,52 +35,245 @@ const data = [
     ]
   },
   {
-    categoryName: "InformalEvent",
-    subcategories: [
-      // { name: "Treasure Hunt", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      // { name: "Escape Room", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      // { name: "Paper Fold", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // // { name: "Tug of War", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
-      // { name: "Bottle Flip", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
-      // { name: "Ping Pong", isPaid: true, paymentAmount: 30, unit: "per person", team: false },
-      // { name: "Beg Borrow Steal", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
-      // // { name: "Pictionary", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
-      // { name: "Last To Leave", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "You Laugh You Loose", isPaid: true, paymentAmount: 50, unit: "per person", team: false }
+    "categoryName": "InformalEvent",
+    "subcategories": [
+      {
+        "name": "Beg Borrow Steal",
+        "isPaid": true,
+        "paymentAmount": 200,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Last to Leave",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Paper Fold",
+        "isPaid": true,
+        "paymentAmount": 60,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Pepsi Pong",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Pictionary",
+        "isPaid": true,
+        "paymentAmount": 200,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Treasure Hunt",
+        "isPaid": true,
+        "paymentAmount": 200,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "You Laugh You Lose",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Among Us",
+        "isPaid": true,
+        "paymentAmount": 100,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Bottle Flip",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Tambola",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Worst Portrait",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per team",
+        "team": true
+      }
+    ]
+  }
+  ,
+  {
+    "categoryName": "Creative",
+    "subcategories": [
+      {
+        "name": "Anatomy Painting",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Art Court (Team of 3–4)",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Best Among Worst (Team of 2)",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Canvas Kicks",
+        "isPaid": true,
+        "paymentAmount": 100,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Luminara",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Paint The Unthinkable",
+        "isPaid": true,
+        "paymentAmount": 50,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Femverse",
+        "isPaid": true,
+        "paymentAmount": 100,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Best Out of Waste",
+        "isPaid": false,
+        "unit": "per person",
+        "team": false
+      }
+    ]
+  },
+  {
+    "categoryName": "Literary",
+    "subcategories": [
+      // Day 1
+      {
+        "name": "Fandom Quiz",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Chaos Unleashed (Scramble)",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
 
+      // Day 2
+      {
+        "name": "General Quiz",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Verses of Aether (Poetry Recital)",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "The Cipher (Code Game)",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Legends Unfold (Storytelling Competition)",
+        "isPaid": true,
+        "paymentAmount": 75,
+        "unit": "per person",
+        "team": false
+      },
+
+      // Day 3
+      {
+        "name": "School Quiz",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Sports Quiz",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Spellbound (Spelling Bee)",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+
+      // Day 4
+      {
+        "name": "Exquisite (Medical Quiz)",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "The Quill & Chronicle (Creative Writing)",
+        "isPaid": true,
+        "paymentAmount": 75,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "The Art of Persuasion (Debate)",
+        "isPaid": true,
+        "paymentAmount": 150,
+        "unit": "per person",
+        "team": false
+      }
     ]
-  },
-  {
-    categoryName: "Creative",
-    subcategories: [
-      // { name: "Poster", isPaid: true, paymentAmount: 50, team: false },
-      // { name: "Tote Bag Painting", isPaid: true, paymentAmount: 150, team: false },
-      // { name: "Face Painting", isPaid: true, paymentAmount: 100, team: false },
-      // { name: "Photography", isPaid: true, paymentAmount: 100, team: false },
-      // { name: "Origami", isPaid: true, paymentAmount: 50, team: false },
-      // { name: "Stone Painting", isPaid: true, paymentAmount: 50, team: false },
-      // { name: "Mix Media", isPaid: true, paymentAmount: 50, team: false }
-    ]
-  },
-  {
-    categoryName: "Literary",
-    subcategories: [
-      // { name: "Kotoba No Umi: Creative Writing (Hindi & English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Shinsekai Stories: What-If Workshop (English)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Monogatari No Yume: Storytelling (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Sakura Verses: Poem Recital (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Samurai Stand-Up: Stand-Up Comedy (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Kamikaze Clash: Turncoat Debate (Bilingual)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      // { name: "Shogun’s Council: Parliamentary Debate (Bilingual)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "The Exquizite: The Ultimate Medical Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "The Otaku Oracle: The Fandom Showdown", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "The Hokage Trials: The Sports Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "Hayakute Curious: The General Quiz", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "Karaoke Diagnosis: Provisional Diagnosis @ Bollywood/Hollywood!", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "SAI Sports Quiz", isPaid: false, team: false },
-      // { name: "Meme Literature", isPaid: false, team: false }
-    ]
-  },
+  }
+  ,
   {
     categoryName: "Esports",
     subcategories: [
@@ -100,18 +293,18 @@ const data = [
     "categoryName": "Cultural",
     "subcategories": [
       // S.No. 1 — Syncopation (Dance Competition) [FREE]
-      { "name": "Syncopation: Mystic Mudras (Solo Classical) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Syncopation: Rhythm Mirage (Solo Western) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Syncopation: Sorcery in Sync (Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
-      { "name": "Syncopation: Astral Troupe (Group) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Syncopation: Mystic Mudras (Solo Classical)", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Syncopation: Rhythm Mirage (Solo Western)", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Syncopation: Sorcery in Sync (Duet)", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Syncopation: Astral Troupe (Group)", "isPaid": false, "unit": "per team", "team": true },
 
 
 
       // S.No. 2 — Rhythmixia (Instrumental Competition) [FREE]
       { "name": "Rhythmixia: Solo Western", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Rhythmixia: Duo Western [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
-      { "name": "Rhythmixia: Solo Classical [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Rhythmixia: Duo Classical [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Rhythmixia: Duo Western", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Rhythmixia: Solo Classical", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Rhythmixia: Duo Classical", "isPaid": false, "unit": "per team", "team": true },
 
       // S.No. 3 — Twilight Masquerade (Drama Competition) [Early-Bird: ₹699]
       { "name": "Twilight Masquerade (Drama Competition)", "isPaid": true, "paymentAmount": 699, "unit": "per team", "team": true },
@@ -120,10 +313,10 @@ const data = [
       { "name": "Sonic Mayhem (Battle of Bands)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
 
       // S.No. 5 — Sonority (Singing Competition) [FREE]
-      { "name": "Sonority: Enchanted Tunes (Western Solo) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Sonority: Enchanted Harmony (Western Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
-      { "name": "Sonority: Swar-Lahar (Classical Solo) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
-      { "name": "Sonority: Swar-Samvaad (Classical Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Sonority: Enchanted Tunes (Western Solo)", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Sonority: Enchanted Harmony (Western Duet)", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Sonority: Swar-Lahar (Classical Solo)", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Sonority: Swar-Samvaad (Classical Duet)", "isPaid": false, "unit": "per team", "team": true },
 
       // S.No. 6 — Cosmos - Isekai- IRL (Cosplay) [Early-Bird: ₹99]
       { "name": "Cosmos - Isekai- IRL (Cosplay)", "isPaid": true, "paymentAmount": 99, "unit": "per person", "team": false },
@@ -149,7 +342,38 @@ const data = [
       // { name: "RESEARCH SHARK TANK (Group)", isPaid: true, paymentAmount: 300, unit: "per team", team: true },
       // { name: "CODE Dx (Group)", isPaid: true, paymentAmount: 200, unit: "per team", team: true }
     ]
+  },
+  {
+    "categoryName": "Women Cell",
+    "subcategories": [
+      {
+        "name": "O womaniya (Talk show)",
+        "isPaid": false,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Hazaar Dastaan (spoken poetry compt.)",
+        "isPaid": true,
+        "paymentAmount": 49,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Chitraa (Art competition)",
+        "isPaid": false,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Thinking out loud",
+        "isPaid": false,
+        "unit": "per person",
+        "team": false
+      }
+    ]
   }
+
 ];
 
 // ✅ Connect and replace existing categories
