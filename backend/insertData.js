@@ -97,22 +97,41 @@ const data = [
   },
 
   {
-    categoryName: "Cultural",
-    subcategories: [
-      // { name: "Ocean Jam (Battle of the Bands)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      // { name: "Syncopation (Dance) - Duet", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "Syncopation (Dance) - Group", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      // { name: "Syncopation (Dance) - Solo", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      // { name: "The Deep Blue Script (Drama)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      // { name: "Geek Cheek Gala(Cosplay)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      // { name: "Rhythmixia (Instrumental - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      // { name: "Rhythmixia (Instrumental - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "Crescendo (Singing - Solo)", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
-      // { name: "Crescendo (Singing - Duet)", isPaid: true, paymentAmount: 150, unit: "per team", team: true },
-      // { name: "Crescendo (Singing - Group)", isPaid: true, paymentAmount: 400, unit: "per team", team: true },
-      // { name: "Enchante (Fashion)", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
+    "categoryName": "Cultural",
+    "subcategories": [
+      // S.No. 1 — Syncopation (Dance Competition) [FREE]
+      { "name": "Syncopation: Mystic Mudras (Solo Classical) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Syncopation: Rhythm Mirage (Solo Western) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Syncopation: Sorcery in Sync (Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Syncopation: Astral Troupe (Group — 3–4 members) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Syncopation: Astral Troupe (Group — more than 5 members) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+
+
+      // S.No. 2 — Rhythmixia (Instrumental Competition) [FREE]
+      { "name": "Rhythmixia: Solo Western [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Rhythmixia: Duo Western [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Rhythmixia: Solo Classical [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Rhythmixia: Duo Classical [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+
+      // S.No. 3 — Twilight Masquerade (Drama Competition) [Early-Bird: ₹699]
+      { "name": "Twilight Masquerade (Drama Competition)", "isPaid": true, "paymentAmount": 699, "unit": "per team", "team": true },
+
+      // S.No. 4 — Sonic Mayhem (Battle of Bands) [Early-Bird: ₹499]
+      { "name": "Sonic Mayhem (Battle of Bands)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
+
+      // S.No. 5 — Sonority (Singing Competition) [FREE]
+      { "name": "Sonority: Enchanted Tunes (Western Solo) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Sonority: Enchanted Harmony (Western Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+      { "name": "Sonority: Swar-Lahar (Classical Solo) [Screening Round]", "isPaid": false, "unit": "per person", "team": false },
+      { "name": "Sonority: Swar-Samvaad (Classical Duet) [Screening Round]", "isPaid": false, "unit": "per team", "team": true },
+
+      // S.No. 6 — Cosmos - Isekai- IRL (Cosplay) [Early-Bird: ₹99]
+      { "name": "Cosmos - Isekai- IRL (Cosplay)", "isPaid": true, "paymentAmount": 99, "unit": "per person", "team": false },
+      // S.No. 7 — Fashionista (Fashion Competition) [Early-Bird: ₹799]
+      { "name": "Fashionista", "isPaid": true, "paymentAmount": 799, "unit": "per team", "team": true }
     ]
-  },
+  }
+  ,
   {
     categoryName: "META-STASISS",
     subcategories: [

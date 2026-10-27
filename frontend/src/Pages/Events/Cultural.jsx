@@ -191,6 +191,18 @@ const Cultural = () => {
                 <h1 className="text-4xl font-bold text-white text-center mb-6">
                     Cultural Event Registration
                 </h1>
+                <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border border-amber-500/40 text-amber-200 flex items-center gap-3 shadow-lg">
+                    <span className="text-2xl">⚡</span>
+                    <div>
+                        <div className="font-semibold text-white flex items-center gap-2">
+                            <span>Early-Bird Registration Offer!</span>
+                            <span className="text-xs bg-amber-500 text-black font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Limited Time</span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-amber-200/90 mt-0.5">
+                            All listed entry fees are special <strong>Early-Bird Fees (INR)</strong> valid only until <strong>16th November</strong>.
+                        </p>
+                    </div>
+                </div>
 
                 {!paymentSuccess ? (
                     <form className="space-y-5" onSubmit={handleConfirmOpen}>
@@ -225,8 +237,10 @@ const Cultural = () => {
                                 <option value="">Select Subcategory</option>
                                 {subcategories.map((sub) => (
                                     <option key={sub._id} value={sub.name}>
-                                        {sub.name} - {sub.paymentAmount ? `₹ ${sub.paymentAmount}` : "Free 🎁"}
+                                        {sub.name} - {sub.paymentAmount ? `₹ ${sub.paymentAmount} (Early Bird)` : "Free (Screening Round)"}
                                     </option>
+
+
                                 ))}
                             </select>
                             {validationErrors.subCategory && (
@@ -242,14 +256,36 @@ const Cultural = () => {
                                         : "This is an individual event."}
                                 </p>
                             )}
+
+                            {/* Screening Round Info Banner */}
+                            {!selectedFee && formData.subCategory && (
+                                <div className="mt-3 p-3 bg-purple-900/30 border border-purple-500/40 rounded-lg text-sm text-purple-200">
+                                    ℹ️ <strong>Screening Round:</strong> Registration for this event is <strong>Free</strong>. Shortlisted candidates will be contacted to pay the final entry fee before the main stage event.
+                                </div>
+                            )}
                         </div>
 
                         {/* Fee */}
-                        {selectedFee && (
-                            <div className="text-center text-xl text-green-400 font-semibold py-2">
-                                💰 Registration Fee: ₹{selectedFee}
+                        {selectedFee ? (
+                            <div className="text-center py-2">
+                                <div className="text-xl text-green-400 font-semibold flex items-center justify-center gap-2">
+                                    <span>💰 Registration Fee: ₹{selectedFee}</span>
+                                    <span className="text-xs bg-amber-500/20 border border-amber-500/40 text-amber-300 font-medium px-2 py-0.5 rounded-full">
+                                        Early-Bird Rate
+                                    </span>
+                                </div>
+                                <p className="text-xs text-amber-300/80 mt-1">
+                                    ⚡ Early-Bird Fee valid till <strong>16th November</strong>
+                                </p>
                             </div>
+                        ) : (
+                            formData.subCategory && (
+                                <div className="text-center text-lg text-purple-300 font-semibold py-2">
+                                    ✨ Registration Fee: Free (Screening Round)
+                                </div>
+                            )
                         )}
+
 
                         {/* Team fields */}
                         {isTeamEvent && (
@@ -481,13 +517,13 @@ const Cultural = () => {
                         </a>
 
 
- <div><b>Make sure to fill out the Google Form sent to your email after making the payment.</b></div>
+                        <div><b>Make sure to fill out the Google Form sent to your email after {selectedFee ? "making the payment" : "completing registration"}.</b></div>
                         <button
                             type="submit"
                             disabled={isProcessing}
                             className="w-full py-4 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold text-lg rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {isProcessing ? "Processing..." : "Register & Pay"}
+                            {isProcessing ? "Processing..." : selectedFee ? "Register & Pay" : "Register for Screening (Free)"}
                         </button>
                     </form>
                 ) : (
@@ -513,7 +549,7 @@ const Cultural = () => {
                                 <span className="text-white font-semibold">{formData.categoryName}</span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="text-gray-400">Sport:</span>
+                                <span className="text-gray-400">Event:</span>
                                 <span className="text-white font-semibold">{formData.subCategory}</span>
                             </div>
                             {formData.teamName && (
@@ -541,7 +577,7 @@ const Cultural = () => {
                         </div>
 
                         <p className="text-green-400 text-lg font-semibold mb-6 text-center">
-                            Registration Fee: {selectedFee ? `₹ ${selectedFee}` : "Free 🎁"}
+                            Registration Fee: {selectedFee ? `₹ ${selectedFee}` : "Free (Screening Round)"}
                         </p>
 
                         <div className="flex justify-center gap-4">
@@ -555,7 +591,7 @@ const Cultural = () => {
                                 onClick={handlePayment}
                                 className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                             >
-                                Confirm & Pay
+                                {selectedFee ? "Confirm & Pay" : "Confirm Registration"}
                             </button>
                         </div>
                     </div>
