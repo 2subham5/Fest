@@ -10,28 +10,28 @@ const bodyParser = require('body-parser');
 const app = express();
 dotenv.config();
 // // app.use(cors())
-// const allowedOrigins = [
-//     'https://eternia.it.com',
-//     'https://www.eternia.it.com',
-//     'https://secure.payu.in',
-//     'https://test.payu.in',
-//     'http://localhost:3000',
-//     'http://localhost:5173'
-// ];
+const allowedOrigins = [
+    'https://eternia.it.com',
+    'https://www.eternia.it.com',
+    'https://secure.payu.in',
+    'https://test.payu.in',
+    'http://localhost:3000',
+    'http://localhost:5173'
+];
 
 
 
-app.use(cors())
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Blocked by CORS'));
-//         }
-//     },
-//     credentials: true
-// }));
+// app.use(cors())
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Blocked by CORS'));
+        }
+    },
+    credentials: true
+}));
 
 app.use(express.json());
 // ✅ Parse URL-encoded bodies (important for PayU)
