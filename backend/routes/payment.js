@@ -533,7 +533,18 @@ function getRegistrationForm(eventName, teamName) {
     "chitraa (art competition)": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
     "thinking out loud": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
 
-
+    // Informal Events
+    "beg borrow steal": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "last to leave": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "paper fold": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "pepsi pong": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "pictionary": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "treasure hunt": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "you laugh you lose": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "among us": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "bottle flip": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "tambola": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+    "worst portrait": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
   };
 
   for (const key in forms) {
