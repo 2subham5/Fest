@@ -515,6 +515,25 @@ function getRegistrationForm(eventName, teamName) {
     "exquisite": "https://forms.gle/7P5nw2bDkxmHKx12A",
     "the quill & chronicle": "https://forms.gle/7P5nw2bDkxmHKx12A",
     "the art of persuasion": "https://forms.gle/7P5nw2bDkxmHKx12A",
+
+    // Esports
+    "bgmi tdm": "https://forms.gle/2vexdwtmKwX4FB6A8",
+    "bgmi": "https://forms.gle/NQf5ivjdZqojbZnC8",
+    "clash royale": "https://docs.google.com/forms/d/e/1FAIpQLScSrdyfO0i8Rsi05sUyKG9l6QXkLA6ABTn64WygAjCAZ61tUQ/viewform?usp=publish-editor",
+    "codm": "https://forms.gle/JzndLfL6mHGpG4tX8",
+    "eafc 26 / fifa": "https://docs.google.com/forms/d/e/1FAIpQLSclevoTZmgYviaGnJ9FfmuLp5Pq8kXgmkIvZtk9QbRc7mJL2g/viewform",
+    "e-football": "https://docs.google.com/forms/d/e/1FAIpQLScdQBkzU7Qnl1xcSh4mNCIPjkycokq2zbbLgsHZ4keVu9wu0Q/viewform?usp=dialog",
+    "free fire — clash squad": "https://docs.google.com/forms/d/e/1FAIpQLScrAR_vJFzZlRf_i_Inrt6HFWRoUqdVri7DrxeO3Y57rVzTvQ/viewform",
+    "free fire — classic": "https://docs.google.com/forms/d/e/1FAIpQLSd8HXOiQoweh9mpBBfGZdAxDHbIioEXm2TOXPlFzhptNRzSfw/viewform",
+    "worldguessr": "https://docs.google.com/forms/d/e/1FAIpQLSdfQsBJ9MvQ2__yXIZZ94CyH3CgkroNeQSehknVlzT77jWr8Q/viewform?usp=publish-editor",
+
+    // Women Cell
+    "o womaniya (talk show)": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
+    "hazaar dastaan (spoken poetry compt.)": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
+    "chitraa (art competition)": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
+    "thinking out loud": "https://docs.google.com/forms/d/e/1FAIpQLScMi7WhOlNRoG7sQC9OC5lRnhx7L9yIXcdhbLS3YYmPcKBIjQ/viewform?usp=publish-editor",
+
+
   };
 
   for (const key in forms) {

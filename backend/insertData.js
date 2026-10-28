@@ -281,7 +281,7 @@ const data = [
       { name: "BGMI TDM", isPaid: true, paymentAmount: 100, unit: "per team", team: true },
       { name: "CODM", isPaid: true, paymentAmount: 200, unit: "per team", team: true },
       { name: "E-Football", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
-      { name: "EAFC 26 / FIFA", isPaid: true, paymentAmount: 100, unit: "per person", team: false },
+      { name: "EAFC 26 / FIFA", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
       { name: "Clash Royale", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
       { name: "WorldGuessr", isPaid: true, paymentAmount: 50, unit: "per person", team: false },
       { name: "Free Fire — Clash Squad", isPaid: true, paymentAmount: 50, unit: "per team", team: true },
