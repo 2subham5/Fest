@@ -455,7 +455,8 @@ const Esports = () => {
             )}
 
             <a
-              href="/ESports.pdf"
+
+              href="/ESports.pdf?v=2"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-md
@@ -478,7 +479,7 @@ const Esports = () => {
                   d="M13.5 6H17.25C17.66 6 18 6.34 18 6.75V10.5M18 6L9 15M6.75 6.75H12.75M6.75 6.75V12.75M6.75 6.75L3 10.5" />
               </svg>
             </a>
- <div><b>Make sure to fill out the Google Form sent to your email after making the payment.</b></div>
+            <div><b>Make sure to fill out the Google Form sent to your email after making the payment.</b></div>
             <button
               type="submit"
               disabled={isProcessing}
