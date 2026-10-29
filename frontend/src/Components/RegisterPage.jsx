@@ -174,7 +174,7 @@ const RegisterPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
             Unlock Elite Pass
           </h1>
-          <p className="text-gray-300 text-lg">Register for ETERNIA 2025</p>
+          <p className="text-gray-300 text-lg">Register for ETERNIA 2026</p>
         </div>
 
         <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">

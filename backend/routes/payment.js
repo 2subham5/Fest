@@ -9,6 +9,7 @@ dotenv.config();
 // const { authenticateUserJwt } = require('../middleware/auth'); // ✅ if auth exports an object
 const { Payment } = require('../db/db');
 const { EventPayment } = require('../db/db');
+const { BasicPayment } = require('../db/db');
 const crypto = require('crypto');
 const { z } = require("zod");
 const axios = require('axios');
@@ -177,6 +178,103 @@ router.post('/pay', async (req, res) => {
     return res
       .status(200)
       .json(new Response(200, "Order created successfully", true, {
+        payuUrl,
+        payuData,
+        // uniqueId: txnid
+        // ${process.env.BASE_URL}
+      }));
+
+  } catch (err) {
+    if (err.name === "ZodError") {
+      return res
+        .status(400)
+        .json(new Response(400, err.errors?.map(e => e.message).join(", "), false));
+    }
+    console.error(err);
+    return res
+      .status(500)
+      .json(new Response(500, "Internal Server Error", false, err.message));
+  }
+});
+//basic pay
+router.post('/basicpay', async (req, res) => {
+  try {
+    const { name, email, contact } = paymentValidationSchema.parse(req.body);
+
+    // Optional: prevent duplicate initiated/expired payments
+    const existingIssuedPayment = await BasicPayment.findOne({
+      email,
+      status: { $in: ['issued', 'expired'] }
+    });
+
+    if (existingIssuedPayment) {
+      return res
+        .status(400)
+        .json(new Response(400, "This email has already completed a payment.", false));
+    }
+
+
+    const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
+    const productinfo = "Eternia Basic Pass";
+    const amountINR = 1;
+
+    // ✅ Correct PayU test hash formula (single hash)
+    const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${name}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
+    const hash = crypto.createHash('sha512').update(hashString).digest('hex');
+
+    // ✅ Log to verify correctness (optional)
+    // console.log("PayU Hash String:", hashString);
+    // console.log("Generated Hash:", hash);
+
+    let paymentDoc = await BasicPayment.findOne({
+      email,
+      status: { $in: ['initiated', 'failed'] }
+    });
+
+    if (paymentDoc) {
+      // ✅ Update existing payment document
+      paymentDoc.name = name;
+      paymentDoc.contact = contact;
+      paymentDoc.amount = amountINR;
+      paymentDoc.uniqueId = txnid;
+      paymentDoc.status = 'initiated';
+      await paymentDoc.save();
+    } else {
+      // ✅ Create new payment document
+      paymentDoc = new BasicPayment({
+        name,
+        email,
+        contact,
+        amount: amountINR,
+        uniqueId: txnid,
+        status: 'initiated'
+      });
+      await paymentDoc.save();
+    }
+
+    const payuUrl = `${PAYU_BASE_URL}/_payment`;
+
+    const payuData = {
+      key: PAYU_MERCHANT_KEY,
+      txnid,
+      amount: amountINR,
+      productinfo,
+      firstname: name,
+      email,
+      phone: contact,
+      surl: `https://eternia.it.com/payment/basicverifyPayment`,
+      furl: `https://eternia.it.com/payment/basicverifyPayment`,
+      hash,
+      udf1: '',
+      udf2: '',
+      udf3: '',
+      udf4: '',
+      udf5: ''
+    };
+
+    return res
+      .status(200)
+      .json(new Response(200, "BasicRegistration created successfully", true, {
         payuUrl,
         payuData,
         // uniqueId: txnid
@@ -421,6 +519,12 @@ async function sendPaymentEmail(toEmail, uniqueId) {
         <h3>Payment Successful!</h3>
         <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
         <p>Scan the attached QR code to access your payment details.</p>
+         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
+        <p style="font-size: 15px; line-height: 1.6;">
+          📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
+          📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
+          
+        </p>
       `,
       attachments: [
         {
@@ -437,7 +541,58 @@ async function sendPaymentEmail(toEmail, uniqueId) {
     console.error("Error sending payment email:", err);
   }
 }
+//basicemail
+async function sendBasicPaymentEmail(toEmail, uniqueId) {
+  try {
+    if (!uniqueId) throw new Error("Unique ID is missing");
 
+    // const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
+
+    // Generate QR code as a buffer
+    // const qrCodeBuffer = await QRCode.toBuffer(qrUrl, {
+    //   errorCorrectionLevel: "H",
+    //   type: "image/png",
+    //   width: 300,
+    // });
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: `"Event Team" <${process.env.EMAIL_USER}>`,
+      to: toEmail,
+      subject: "Payment Successful - Your Unique ID",
+      html: `
+       <h3>Congratulations! You have received the Basic Registration Pass!</h3>
+        <h3>Payment Successful!</h3>
+        <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
+         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
+        <p style="font-size: 15px; line-height: 1.6;">
+          📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
+          📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
+          
+        </p>
+      `,
+      // attachments: [
+      //   {
+      //     filename: "qr-code.png",
+      //     content: qrCodeBuffer,
+      //     cid: "qrcode", // Content ID for embedding
+      //   },
+      // ],
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent: " + info.response);
+  } catch (err) {
+    console.error("Error sending payment email:", err);
+  }
+}
 function getRegistrationForm(eventName, teamName) {
   const name = eventName.toLowerCase();
 
@@ -621,9 +776,9 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
 
         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
         <p style="font-size: 15px; line-height: 1.6;">
-          📧 Email: <a href="mailto:aiimseternia@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
-          📞 Phone: <a href="tel:7429775590" style="color: #004aad; text-decoration: none;">7429775590</a>,
-          <a href="tel:7339940711" style="color: #004aad; text-decoration: none;">7339940711</a>
+          📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
+          📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
+          
         </p>
 
         <p style="font-size: 15px; line-height: 1.6; color: #333;">
@@ -810,7 +965,53 @@ router.post("/eventverifyPayment", async (req, res) => {
     return res.redirect(redirectUrl);
   }
 });
+//verifybasic
+router.post("/basicverifyPayment", async (req, res) => {
+  try {
+    const {
+      mihpayid,
+      status,
+      txnid,
+      hash,
+      key,
+      amount,
+      productinfo,
+      firstname,
+      email
+    } = req.body;
 
+    const hashSequence = `${PAYU_MERCHANT_SALT}|${status}|||||||||||${email}|${firstname}|${productinfo}|${amount}|${txnid}|${key}`;
+    const expectedHash = crypto.createHash("sha512").update(hashSequence).digest("hex");
+
+    let redirectUrl = `/`;
+
+    if (hash === expectedHash && status === "success") {
+      await BasicPayment.findOneAndUpdate(
+        { uniqueId: txnid },
+        { status: "issued", payuPaymentId: mihpayid },
+        { new: true }
+      );
+      sendBasicPaymentEmail(email, txnid);
+      // ✅ Redirect with success params
+      redirectUrl += `?success=true&uniqueId=${txnid}&email=${encodeURIComponent(email)}`;
+    } else {
+      await BasicPayment.findOneAndUpdate(
+        { uniqueId: txnid },
+        { status: "failed" }
+      );
+      // ❌ Redirect with error params
+      redirectUrl += `?success=false&message=Payment failed or hash mismatch`;
+    }
+
+    return res.redirect(redirectUrl);
+
+  } catch (err) {
+    console.error("Error verifying payment:", err);
+
+    const redirectUrl = `/register?success=false&message=${encodeURIComponent(err.message)}`;
+    return res.redirect(redirectUrl);
+  }
+});
 
 router.post("/send-whatsapp", async (req, res) => {
   const { contact, uniqueId } = req.body;

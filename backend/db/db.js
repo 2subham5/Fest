@@ -23,6 +23,19 @@ const paymentSchema = new mongoose.Schema({
     default: "not_issued"
   },
 }, { timestamps: true });
+const basicpaymentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  contact: { type: String, required: true },
+  amount: { type: Number, required: true },
+  uniqueId: { type: String, unique: true },
+  payuPaymentId: { type: String }, // store PayU payment ID after verification
+  status: {
+    type: String,
+    enum: ["not_issued", "initiated", "issued", "failed", "expired"],
+    default: "not_issued"
+  },
+}, { timestamps: true });
 // razorpayOrderId: { type: String, required: true },
 // razorpayPaymentId: { type: String },
 
@@ -155,6 +168,7 @@ const EventsPaymentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Payment = mongoose.model('Payment', paymentSchema);
+const BasicPayment = mongoose.model('BasicPayment', basicpaymentSchema);
 const User = mongoose.model('User', userSchema);
 const Category = mongoose.model('Category', categorySchema);
 const EventPayment = mongoose.model('EventPayment', EventsPaymentSchema);
@@ -162,6 +176,7 @@ module.exports = {
   Payment,
   User,
   Category,
-  EventPayment
+  EventPayment,
+  BasicPayment
 };
 

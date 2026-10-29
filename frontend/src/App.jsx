@@ -27,6 +27,7 @@ import Cultural from './Pages/Events/Cultural';
 import WomenCell from './Pages/Events/WomenCell';
 import SpecialEvents from './Components/SpecialEvents';
 import MetaStasiss from './Pages/Events/MetaStasiss';
+import BasicRegistration from './Pages/BasicRegistration';
 export default function App() {
   return (
     <RecoilRoot>
@@ -71,7 +72,7 @@ export default function App() {
               <Route path="/creative" element={<Creative />} />
               <Route path="/cultural" element={<Cultural />} />
               <Route path="/womencell" element={<WomenCell />} />
-
+              <Route path="/basicPay" element={<BasicRegistration />} />
               {/* <Route path="/metastasiss" element={<MetaStasiss />} /> */}
             </Routes>
           </main>
