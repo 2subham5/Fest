@@ -28,6 +28,7 @@ import WomenCell from './Pages/Events/WomenCell';
 import SpecialEvents from './Components/SpecialEvents';
 import MetaStasiss from './Pages/Events/MetaStasiss';
 import BasicRegistration from './Pages/BasicRegistration';
+import BasicPaymentTable from './Components/BasicPaymentTable';
 export default function App() {
   return (
     <RecoilRoot>
@@ -63,7 +64,7 @@ export default function App() {
               {/* Data Page */}
               <Route path="/data" element={<PaymentTable />} />
               <Route path="/eventData" element={<EventPaymentTable />} />
-
+              <Route path="/basicregistrationdata" element={<BasicPaymentTable />} />
               {/* Event pages */}
               <Route path="/sports" element={<SportsEvent />} />
               <Route path="/literary" element={<Literary />} />
