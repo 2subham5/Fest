@@ -31,7 +31,8 @@ const data = [
       { "name": "Carrom", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
       { "name": "Lawn Tennis (Singles)", "isPaid": true, "paymentAmount": 499, "gender": "both", "unit": "per person", "team": false },
       { "name": "Lawn Tennis (Doubles)", "isPaid": true, "paymentAmount": 499, "gender": "both", "unit": "per team", "team": true },
-      { "name": "Arm Wrestling", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false }
+      { "name": "Arm Wrestling", "isPaid": true, "paymentAmount": 99, "gender": "both", "unit": "per person", "team": false },
+      { "name": "Medrox", "isPaid": true, "paymentAmount": 299, "gender": "both", "unit": "per person", "team": false }
     ]
   },
   {

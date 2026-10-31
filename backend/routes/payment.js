@@ -625,6 +625,7 @@ function getRegistrationForm(eventName, teamName) {
 
 
     // Sports Events
+    "medrox": "https://forms.gle/ATZSipf8muaVUoBo9",
     "volleyball (boys)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "volleyball (girls)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "volleyball": "https://forms.gle/ryx3xEmUpvDVt8xy8",
