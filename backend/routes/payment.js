@@ -652,12 +652,12 @@ function getRegistrationForm(eventName, teamName) {
     "badminton": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "throw ball": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "kabaddi": "https://forms.gle/ryx3xEmUpvDVt8xy8",
-    "carrom": "https://forms.gle/ryx3xEmUpvDVt8xy8",
+    "carrom (singles)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "lawn tennis (singles)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "lawn tennis (doubles)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "lawn tennis": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     "arm wrestling": "https://forms.gle/ryx3xEmUpvDVt8xy8",
-
+    "carrom (doubles)": "https://forms.gle/ryx3xEmUpvDVt8xy8",
     // Literary Events
     "fandom quiz": "https://forms.gle/7P5nw2bDkxmHKx12A",
     "chaos unleashed": "https://forms.gle/7P5nw2bDkxmHKx12A",
