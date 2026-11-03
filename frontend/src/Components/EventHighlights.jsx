@@ -101,7 +101,7 @@ const EventHighlights = () => {
 
               {/* Mobile */}
               <div className="md:hidden text-center px-6">
-                <h4 className="text-white font-semibold text-2xl mb-3">Step 1 — Basic Registration (Free)</h4>
+                <h4 className="text-white font-semibold text-2xl mb-3">Step 1 — Basic Registration (Mandatory)</h4>
                 <p className="text-gray-300 leading-relaxed">
                   Create your Eternia account by filling in your name, college, email and phone.
                   You’re officially registered!
