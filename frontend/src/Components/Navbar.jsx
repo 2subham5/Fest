@@ -68,7 +68,7 @@ const Navbar = () => {
             BROCHURE
           </a>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe7IRZ59WLepZGCIx0TW63doT2vFhrJ1GNmurdiW7qJS5lfUA/viewform?usp=publish-editor"
+
             className="navbar-anchor block"
             onClick={() => setIsOpen(false)}
           >

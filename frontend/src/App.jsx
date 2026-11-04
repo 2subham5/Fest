@@ -50,7 +50,7 @@ export default function App() {
                     <EventHighlights />
                     <SpecialEvents />
                     <Cards />
-                    {/* <RegisterPage /> */}
+                    <RegisterPage />
                   </>
                 }
               />

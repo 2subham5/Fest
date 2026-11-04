@@ -130,23 +130,16 @@ const data = [
         "team": false
       },
       {
-        "name": "Art Court (Team of 3–4)",
-        "isPaid": true,
-        "paymentAmount": 150,
-        "unit": "per team",
-        "team": true
-      },
-      {
         "name": "Best Among Worst (Team of 2)",
         "isPaid": true,
-        "paymentAmount": 50,
+        "paymentAmount": 100,
         "unit": "per team",
         "team": true
       },
       {
         "name": "Canvas Kicks",
         "isPaid": true,
-        "paymentAmount": 100,
+        "paymentAmount": 150,
         "unit": "per person",
         "team": false
       },

@@ -119,7 +119,7 @@ router.post('/pay', async (req, res) => {
 
     const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
     const productinfo = "Eternia Pass";
-    const amountINR = 500;
+    const amountINR = 1;
 
     // ✅ Correct PayU test hash formula (single hash)
     const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${name}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
@@ -177,7 +177,7 @@ router.post('/pay', async (req, res) => {
 
     return res
       .status(200)
-      .json(new Response(200, "Order created successfully", true, {
+      .json(new Response(200, "Pass created successfully", true, {
         payuUrl,
         payuData,
         // uniqueId: txnid
@@ -489,7 +489,7 @@ router.post("/sportspay", async (req, res) => {
 //     console.error("Error sending payment email:", err);
 //   }
 // }
-async function sendPaymentEmail(toEmail, uniqueId) {
+async function sendPaymentEmail(toEmail, firstname, uniqueId) {
   try {
     if (!uniqueId) throw new Error("Unique ID is missing");
 
@@ -515,7 +515,10 @@ async function sendPaymentEmail(toEmail, uniqueId) {
       to: toEmail,
       subject: "Payment Successful - Your Unique ID",
       html: `
-       <h3>Congratulations! You have received the Elite Pass!</h3>
+        <p style="font-size: 15px; line-height: 1.6; color: #333;">
+          Greetings from <strong>AIIMS Guwahati!</strong> 🌟
+        </p>
+       <h3>Congratulations! ${firstname} You have received the Elite Pass!</h3>
         <h3>Payment Successful!</h3>
         <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
         <p>Scan the attached QR code to access your payment details.</p>
@@ -701,6 +704,17 @@ function getRegistrationForm(eventName, teamName) {
     "bottle flip": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
     "tambola": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
     "worst portrait": "https://docs.google.com/forms/d/e/1FAIpQLSf7h0RAuF3R7ZVi2XaoMV8npb4ZbdOgwS_Cj9GlMcqlw44ZiQ/viewform?usp=publish-editor",
+
+    // Creative Events
+    "anatomy painting": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "best among worst (team of 2)": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "best among worst": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "canvas kicks": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "luminara": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "paint the unthinkable": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "femverse": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "best out of waste": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
+    "art court": "https://forms.gle/MEx3j1PF3P5n4Fpd7",
   };
 
   for (const key in forms) {
@@ -897,7 +911,7 @@ router.post("/verifyPayment", async (req, res) => {
         { status: "issued", payuPaymentId: mihpayid },
         { new: true }
       );
-      sendPaymentEmail(email, txnid);
+      sendPaymentEmail(email, firstname, txnid);
       // ✅ Redirect with success params
       redirectUrl += `?success=true&uniqueId=${txnid}&email=${encodeURIComponent(email)}`;
     } else {
