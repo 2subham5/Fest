@@ -119,7 +119,7 @@ router.post('/pay', async (req, res) => {
 
     const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
     const productinfo = "Eternia Pass";
-    const amountINR = 1;
+    const amountINR = 499;
 
     // ✅ Correct PayU test hash formula (single hash)
     const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${name}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
@@ -521,7 +521,6 @@ async function sendPaymentEmail(toEmail, firstname, uniqueId) {
        <h3>Congratulations! ${firstname} You have received the Elite Pass!</h3>
         <h3>Payment Successful!</h3>
         <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
-        <p>Scan the attached QR code to access your payment details.</p>
          <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
         <p style="font-size: 15px; line-height: 1.6;">
           📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
