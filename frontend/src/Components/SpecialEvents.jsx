@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const imagePairs = [
     { left: "/fashion.jpg", right: "/equinox.PNG" },
-    { left: "/talkShow.PNG", right: "/djNight.PNG" },
-    { left: "/starNight.PNG", right: "/special.PNG" },
+    { left: "/talkShow.jpeg", right: "/djNight.jpeg" },
+    { left: "/starNight.jpeg", right: "/special.jpeg" },
 ];
 export default function SpecialEvents() {
     return (
@@ -28,7 +28,7 @@ export default function SpecialEvents() {
                             style={{ cursor: "pointer" }}
                             transition={{ duration: 0.9, ease: "easeOut" }}
                             viewport={{ amount: 0.3 }}
-                            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSduZgP4yNtQFUF-Oga138uom9rN1jaxEGrxHLb8525cUL_S-A/viewform?usp=dialog", "_blank")}
+                        // onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSduZgP4yNtQFUF-Oga138uom9rN1jaxEGrxHLb8525cUL_S-A/viewform?usp=dialog", "_blank")}
                         />
 
                         {/* Right Image */}
