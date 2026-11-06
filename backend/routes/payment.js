@@ -673,6 +673,7 @@ function getRegistrationForm(eventName, teamName) {
     "exquisite": "https://forms.gle/7P5nw2bDkxmHKx12A",
     "the quill & chronicle": "https://forms.gle/7P5nw2bDkxmHKx12A",
     "the art of persuasion": "https://forms.gle/7P5nw2bDkxmHKx12A",
+    "aippm": "https://forms.gle/3QeQC7zXYhCp7Thz9",
 
     // Esports
     "bgmi tdm": "https://forms.gle/2vexdwtmKwX4FB6A8",

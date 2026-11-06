@@ -453,7 +453,7 @@ const Literary = () => {
             )}
 
             <a
-              href="/Literary.pdf?v=2"
+              href="/Literary.pdf?v=3"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-md

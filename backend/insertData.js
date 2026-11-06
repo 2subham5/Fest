@@ -207,6 +207,13 @@ const data = [
         "team": false
       },
       {
+        "name": "AIPPM",
+        "isPaid": true,
+        "paymentAmount": 250,
+        "unit": "per person",
+        "team": false
+      },
+      {
         "name": "The Cipher (Code Game)",
         "isPaid": true,
         "paymentAmount": 30,
