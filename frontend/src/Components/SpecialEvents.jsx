@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const imagePairs = [
-    { left: "/fashion.jpg", right: "/equinox.PNG" },
+    { left: "/fashion.jpg", right: "/equinox.jpeg" },
     { left: "/talkShow.jpeg", right: "/djNight.jpeg" },
     { left: "/starNight.jpeg", right: "/special.jpeg" },
 ];
