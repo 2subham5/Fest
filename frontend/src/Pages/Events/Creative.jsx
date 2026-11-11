@@ -454,7 +454,7 @@ const Creative = () => {
             )}
 
             <a
-              href="/Creative.pdf"
+              href="/Creative.pdf?v=2"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-md
@@ -478,7 +478,7 @@ const Creative = () => {
               </svg>
             </a>
             <div><b>Make sure to fill out the Google Form sent to your email after making the payment.</b></div>
-            
+
             <button
               type="submit"
               disabled={isProcessing}
