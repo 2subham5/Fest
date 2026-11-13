@@ -191,7 +191,7 @@ const Cultural = () => {
                 <h1 className="text-4xl font-bold text-white text-center mb-6">
                     Cultural Event Registration
                 </h1>
-                <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border border-amber-500/40 text-amber-200 flex items-center gap-3 shadow-lg">
+                {/* <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border border-amber-500/40 text-amber-200 flex items-center gap-3 shadow-lg">
                     <span className="text-2xl">⚡</span>
                     <div>
                         <div className="font-semibold text-white flex items-center gap-2">
@@ -202,7 +202,7 @@ const Cultural = () => {
                             All listed entry fees are special <strong>Early-Bird Fees (INR)</strong> valid only until <strong>16th November</strong>.
                         </p>
                     </div>
-                </div>
+                </div> */}
 
                 {!paymentSuccess ? (
                     <form className="space-y-5" onSubmit={handleConfirmOpen}>
@@ -258,15 +258,15 @@ const Cultural = () => {
                             )}
 
                             {/* Screening Round Info Banner */}
-                            {!selectedFee && formData.subCategory && (
+                            {/* {!selectedFee && formData.subCategory && (
                                 <div className="mt-3 p-3 bg-purple-900/30 border border-purple-500/40 rounded-lg text-sm text-purple-200">
                                     ℹ️ <strong>Screening Round:</strong> Registration for this event is <strong>Free</strong>. Shortlisted candidates will be contacted to pay the final entry fee before the main stage event.
                                 </div>
-                            )}
+                            )} */}
                         </div>
 
                         {/* Fee */}
-                        {selectedFee ? (
+                        {/* {selectedFee ? (
                             <div className="text-center py-2">
                                 <div className="text-xl text-green-400 font-semibold flex items-center justify-center gap-2">
                                     <span>💰 Registration Fee: ₹{selectedFee}</span>
@@ -284,7 +284,7 @@ const Cultural = () => {
                                     ✨ Registration Fee: Free (Screening Round)
                                 </div>
                             )
-                        )}
+                        )} */}
 
 
                         {/* Team fields */}

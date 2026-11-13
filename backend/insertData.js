@@ -309,7 +309,7 @@ const data = [
       { "name": "Rhythmixia: Duo Classical", "isPaid": false, "unit": "per team", "team": true },
 
       // S.No. 3 — Twilight Masquerade (Drama Competition) [Early-Bird: ₹699]
-      { "name": "Twilight Masquerade (Drama Competition)", "isPaid": true, "paymentAmount": 699, "unit": "per team", "team": true },
+      { "name": "Twilight Masquerade (Drama Competition)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
 
       // S.No. 4 — Sonic Mayhem (Battle of Bands) [Early-Bird: ₹499]
       { "name": "Sonic Mayhem (Battle of Bands)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
