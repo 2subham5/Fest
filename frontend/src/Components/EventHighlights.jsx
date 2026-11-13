@@ -47,7 +47,7 @@ const EventHighlights = () => {
     {
       id: 7,
       title: "Women Cell",
-      image: "/womencell.png",
+      image: "/womencell.jpeg",
       route: "/womencell"
     },
     // {
