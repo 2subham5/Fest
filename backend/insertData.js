@@ -363,7 +363,8 @@ const data = [
       },
       {
         "name": "Chitraa (Art competition)",
-        "isPaid": false,
+        "isPaid": true,
+        "paymentAmount": 100,
         "unit": "per person",
         "team": false
       },

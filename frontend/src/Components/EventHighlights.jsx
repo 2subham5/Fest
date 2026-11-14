@@ -129,7 +129,7 @@ const EventHighlights = () => {
             {/* STEP 3 - LEFT */}
             <div className="relative flex md:justify-between items-center">
               <div className="hidden md:block w-1/2 pr-12 text-right">
-                <h4 className="text-white font-semibold text-2xl mb-3">Step 3 — Delegate Pass</h4>
+                <h4 className="text-white font-semibold text-2xl mb-3">Step 3 — Elite Pass</h4>
                 <p className="text-gray-300 leading-relaxed">
                   Purchase your delegate pass for the main night events. Your confirmation e-ticket will be sent instantly.
                 </p>
@@ -140,9 +140,9 @@ const EventHighlights = () => {
 
               {/* Mobile */}
               <div className="md:hidden text-center px-6">
-                <h4 className="text-white font-semibold text-2xl mb-3">Step 3 — Delegate Pass</h4>
+                <h4 className="text-white font-semibold text-2xl mb-3">Step 3 — Elite Pass</h4>
                 <p className="text-gray-300 leading-relaxed">
-                  Purchase your delegate pass for the main night events. Your confirmation e-ticket will be sent instantly.
+                  Purchase your elite pass for the main night events. Your confirmation e-ticket will be sent instantly.
                 </p>
               </div>
             </div>
@@ -195,7 +195,7 @@ const EventHighlights = () => {
           >
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/30 to-purple-500/30 opacity-0 group-hover:opacity-40 blur-lg transition-all duration-300 pointer-events-none"></div>
             <span className="relative text-white text-xl font-semibold tracking-tight">
-              Delegate Pass
+              Elite Pass
             </span>
           </button>
 
