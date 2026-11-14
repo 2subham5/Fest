@@ -117,11 +117,15 @@ const EventsPaymentSchema = new mongoose.Schema(
       match: /^[0-9]{10}$/,
     },
 
+    // institutionName: {
+    //   type: String,
+    //   trim: true,
+    // },
     institutionName: {
       type: String,
+      required: [true, "Institution name is required"],
       trim: true,
     },
-
     email: {
       type: String,
       required: true,

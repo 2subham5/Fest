@@ -103,10 +103,13 @@ const SportsEvent = () => {
       errors.email = "Invalid email format";
     }
 
-    if (hasInstitution) {
-      if (!formData.institutionName) {
-        errors.institutionName = "Institution name is required";
-      }
+    // if (hasInstitution) {
+    //   if (!formData.institutionName) {
+    //     errors.institutionName = "Institution name is required";
+    //   }
+    // }
+    if (!formData.institutionName || !formData.institutionName.trim()) {
+      errors.institutionName = "Institution name is required";
     }
     if (!formData.aadhaarCard) {
       errors.aadhaarCard = "Aadhaar Card is required";
@@ -420,7 +423,28 @@ const SportsEvent = () => {
                 )}
               </div>
             )} */}
-
+            {/* Institution Name */}
+            <div>
+              <label className="block text-gray-300 text-sm font-medium mb-2">
+                Institution / College Name *
+              </label>
+              <input
+                type="text"
+                name="institutionName"
+                value={formData.institutionName}
+                onChange={handleInputChange}
+                placeholder="Enter institution / college name"
+                className={`w-full px-4 py-3 bg-gray-700/60 border rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:outline-none ${validationErrors.institutionName
+                  ? "border-red-500"
+                  : "border-gray-600"
+                  }`}
+              />
+              {validationErrors.institutionName && (
+                <p className="text-red-400 text-xs mt-1">
+                  {validationErrors.institutionName}
+                </p>
+              )}
+            </div>
             {/* Aadhaar */}
             <div>
               <label className="block text-gray-300 text-sm font-medium mb-2">

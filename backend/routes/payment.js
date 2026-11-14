@@ -39,7 +39,8 @@ const sportPaymentValidationSchema = z
     individualName: z.string().optional(),
     leaderName: z.string().optional(),
     mobileNumber: z.string().min(10, "Mobile number must be at least 10 digits"),
-    institutionName: z.string().optional(),
+    // file: backend/routes/payment.js (around line 42)
+    institutionName: z.string().trim().min(1, "Institution name is required"),
     email: z.string().email("Invalid email format"),
     aadhaarCard: z.string().optional(),
     collegeId: z.string().optional(),
@@ -71,15 +72,15 @@ const sportPaymentValidationSchema = z
       });
     }
     // Aadhaar or CollegeID logic
-    if (data.institutionName) {
-      if (!data.collegeId) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "collegeId is required when institutionName is provided.",
-          path: ["collegeId"],
-        });
-      }
-    }
+    // if (data.institutionName) {
+    //   if (!data.collegeId) {
+    //     ctx.addIssue({
+    //       code: z.ZodIssueCode.custom,
+    //       message: "collegeId is required when institutionName is provided.",
+    //       path: ["collegeId"],
+    //     });
+    //   }
+    // }
     if (!data.aadhaarCard) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -737,94 +738,131 @@ async function eventPaymentEmail(toEmail, participantName, eventName, teamName, 
         pass: process.env.EMAIL_PASS,
       },
     });
-
-    // ✅ Compose simple congratulations email
+    // Cleaned email options example for eventPaymentEmail:
     const mailOptions = {
-      from: `"Event Team" <${process.env.EMAIL_USER}>`,
+      from: `"Eternia 2026 - AIIMS Guwahati" <${process.env.EMAIL_USER}>`,
+      replyTo: "techeternia25@gmail.com",
       to: toEmail,
-      subject: "ETERNIA 2026 || Congratulations! Payment Successful.Mandatory to fill the google form. 🎉",
+      subject: `Eternia 2026 Registration Confirmation: ${eventName}`,
+      text: `Hello ${participantName || ""},\n\nThank you for registering for ${eventName} at Eternia 2026 (AIIMS Guwahati). We have received your payment of ₹${amount}.\n\nPlease complete your event registration form here:\n${getRegistrationForm(eventName, teamName)}\n\nVenue: AIIMS Guwahati\nContact: techeternia25@gmail.com | 9875379386\n\nWarm regards,\nTeam Eternia`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          
-          <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f6f8fa; margin: 0; padding: 0; color: #333333;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 650px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-    <tr>
-      <td style="background-color: #004aad; padding: 20px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-        <h1 style="color: #ffffff; margin: 0; font-size: 22px;">AIIMS GUWAHATI</h1>
-        <p style="color: #d9e6ff; margin: 5px 0 0; font-size: 14px;">Team Eternia</p>
-      </td>
-    </tr>
-  <p style="font-size: 24px;">
-            <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="color: blue; text-decoration: underline; font-weight: 500; cursor: pointer;">
-              Please fill out this Google Form mandatorily: Click Here
-            </a>
-          </p>
-    <tr>
-      <td style="padding: 30px;">
-        <p style="font-size: 16px; color: #333;"><strong>🎉 Congratulations ${participantName ? participantName : ""}${teamName && teamName !== "" ? `(TEAM: ${teamName})` : ""}!</strong></p>
-
-        <p style="font-size: 15px; line-height: 1.6; color: #333;">
-          Greetings from <strong>AIIMS Guwahati!</strong> 🌟
-        </p>
-
-        <p style="font-size: 15px; line-height: 1.6; color: #333;">
-          We are happy to inform you that your registration for the <strong>[${eventName}]</strong> has been successfully completed, and we have received your payment of <strong>₹${amount}</strong>.
-        </p>
-
-        <p style="font-size: 15px; line-height: 1.6; color: #333;">
-          Thank you for being a part of this event — we appreciate your enthusiasm and participation. We are excited to have you compete and showcase your talent!
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #eee; margin: 25px 0;" />
-
-        <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📍 Venue</h3>
-        <p style="font-size: 15px; color: #333; line-height: 1.6;">
-          <strong>AIIMS Guwahati</strong><br>
-          <a href="https://maps.app.goo.gl/zRQwQRxFqkYGN8po7?g_st=ipc" style="color: #004aad; text-decoration: none; cursor: pointer;">View on Google Maps</a>
-        </p>
-
-       
-
-        <p style="font-size: 15px; color: #333; line-height: 1.6;">
-          Please make sure to <strong>carry a valid ID document</strong> for identification and <strong>go through the rulebook</strong> once before the competition.
-        </p>
-
-        <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
-        <p style="font-size: 15px; line-height: 1.6;">
-          📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
-          📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
-          
-        </p>
-
-        <p style="font-size: 15px; line-height: 1.6; color: #333;">
-          We wish you all the best for the competition! 💫<br>
-          Looking forward to your active participation.
-        </p>
-
-        <p style="font-size: 15px; color: #333; margin-top: 25px;">
-          Warm regards,<br>
-          <strong>Team Eternia</strong><br>
-          <strong>AIIMS Guwahati</strong>
-        </p>
-      </td>
-    </tr>
-
-    <tr>
-      <td style="background-color: #f0f3f7; text-align: center; padding: 15px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
-        <p style="font-size: 12px; color: #666; margin: 0;">
-          © 2025 Team Eternia, AIIMS Guwahati. All rights reserved.
-        </p>
-      </td>
-    </tr>
-  </table>
-</body>
-          
-          <p style="font-size: 14px; color: #666; margin-top: 30px;">
-            See you at the event! 🎊
-          </p>
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+      <div style="background-color: #004aad; padding: 24px; text-align: center; color: #ffffff;">
+        <h1 style="margin: 0; font-size: 22px;">AIIMS GUWAHATI</h1>
+        <p style="margin: 6px 0 0; font-size: 14px; opacity: 0.9;">Eternia 2026 Event Registration</p>
+      </div>
+      <div style="padding: 28px; color: #333333; line-height: 1.6;">
+        <h2 style="font-size: 18px; margin-top: 0;">Registration Confirmed!</h2>
+        <p>Dear <strong>${participantName || "Participant"}</strong>${teamName ? ` (Team: <strong>${teamName}</strong>)` : ""},</p>
+        <p>Your registration for <strong>${eventName}</strong> has been received, along with your payment of <strong>₹${amount}</strong>.</p>
+        
+        <div style="text-align: center; margin: 28px 0;">
+          <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="background-color: #004aad; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+            Complete Event Registration Form
+          </a>
         </div>
-      `,
+        
+        <hr style="border: none; border-top: 1px solid #eeeeee; margin: 24px 0;" />
+        <h3 style="color: #004aad; font-size: 15px; margin-bottom: 6px;">📍 Venue & Guidelines</h3>
+        <p style="font-size: 14px; margin-top: 0;">AIIMS Guwahati &bull; Please carry a valid college/govt ID card.</p>
+        
+        <h3 style="color: #004aad; font-size: 15px; margin-bottom: 6px;">📞 Queries</h3>
+        <p style="font-size: 14px; margin-top: 0;">Email: <a href="mailto:techeternia25@gmail.com">techeternia25@gmail.com</a> | Phone: 9875379386</p>
+      </div>
+      <div style="background-color: #f7f9fa; padding: 14px; text-align: center; font-size: 12px; color: #777777;">
+        &copy; 2026 Team Eternia, AIIMS Guwahati. All rights reserved.
+      </div>
+    </div>
+  `
     };
+    // ✅ Compose simple congratulations email
+
+    //     const mailOptions = {
+    //       from: `"Event Team" <${process.env.EMAIL_USER}>`,
+    //       to: toEmail,
+    //       subject: "ETERNIA 2026 || Congratulations! Payment Successful.Mandatory to fill the google form. 🎉",
+    //       html: `
+    //         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+
+    //           <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f6f8fa; margin: 0; padding: 0; color: #333333;">
+    //   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 650px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    //     <tr>
+    //       <td style="background-color: #004aad; padding: 20px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+    //         <h1 style="color: #ffffff; margin: 0; font-size: 22px;">AIIMS GUWAHATI</h1>
+    //         <p style="color: #d9e6ff; margin: 5px 0 0; font-size: 14px;">Team Eternia</p>
+    //       </td>
+    //     </tr>
+    //   <p style="font-size: 24px;">
+    //             <a href="${getRegistrationForm(eventName, teamName)}" target="_blank" style="color: blue; text-decoration: underline; font-weight: 500; cursor: pointer;">
+    //               Please fill out this Google Form mandatorily: Click Here
+    //             </a>
+    //           </p>
+    //     <tr>
+    //       <td style="padding: 30px;">
+    //         <p style="font-size: 16px; color: #333;"><strong>🎉 Congratulations ${participantName ? participantName : ""}${teamName && teamName !== "" ? `(TEAM: ${teamName})` : ""}!</strong></p>
+
+    //         <p style="font-size: 15px; line-height: 1.6; color: #333;">
+    //           Greetings from <strong>AIIMS Guwahati!</strong> 🌟
+    //         </p>
+
+    //         <p style="font-size: 15px; line-height: 1.6; color: #333;">
+    //           We are happy to inform you that your registration for the <strong>[${eventName}]</strong> has been successfully completed, and we have received your payment of <strong>₹${amount}</strong>.
+    //         </p>
+
+    //         <p style="font-size: 15px; line-height: 1.6; color: #333;">
+    //           Thank you for being a part of this event — we appreciate your enthusiasm and participation. We are excited to have you compete and showcase your talent!
+    //         </p>
+
+    //         <hr style="border: none; border-top: 1px solid #eee; margin: 25px 0;" />
+
+    //         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📍 Venue</h3>
+    //         <p style="font-size: 15px; color: #333; line-height: 1.6;">
+    //           <strong>AIIMS Guwahati</strong><br>
+    //           <a href="https://maps.app.goo.gl/zRQwQRxFqkYGN8po7?g_st=ipc" style="color: #004aad; text-decoration: none; cursor: pointer;">View on Google Maps</a>
+    //         </p>
+
+
+
+    //         <p style="font-size: 15px; color: #333; line-height: 1.6;">
+    //           Please make sure to <strong>carry a valid ID document</strong> for identification and <strong>go through the rulebook</strong> once before the competition.
+    //         </p>
+
+    //         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
+    //         <p style="font-size: 15px; line-height: 1.6;">
+    //           📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
+    //           📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
+
+    //         </p>
+
+    //         <p style="font-size: 15px; line-height: 1.6; color: #333;">
+    //           We wish you all the best for the competition! 💫<br>
+    //           Looking forward to your active participation.
+    //         </p>
+
+    //         <p style="font-size: 15px; color: #333; margin-top: 25px;">
+    //           Warm regards,<br>
+    //           <strong>Team Eternia</strong><br>
+    //           <strong>AIIMS Guwahati</strong>
+    //         </p>
+    //       </td>
+    //     </tr>
+
+    //     <tr>
+    //       <td style="background-color: #f0f3f7; text-align: center; padding: 15px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+    //         <p style="font-size: 12px; color: #666; margin: 0;">
+    //           © 2025 Team Eternia, AIIMS Guwahati. All rights reserved.
+    //         </p>
+    //       </td>
+    //     </tr>
+    //   </table>
+    // </body>
+
+    //           <p style="font-size: 14px; color: #666; margin-top: 30px;">
+    //             See you at the event! 🎊
+    //           </p>
+    //         </div>
+    //       `,
+    //     };
 
     // ✅ Send the email
     const info = await transporter.sendMail(mailOptions);

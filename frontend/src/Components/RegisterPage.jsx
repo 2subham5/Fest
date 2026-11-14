@@ -168,6 +168,7 @@ const RegisterPage = () => {
   };
 
   return (
+
     <div className="min-h-screen flex items-center justify-center px-6 py-12 relative">
       <div className="relative z-10 w-full max-w-lg mx-auto">
         <div className="text-center mb-8">
