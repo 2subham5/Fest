@@ -6,6 +6,7 @@ const { authenticateAdminJwt } = require('../middleware/auth');
 const { User } = require('../db/db')
 const { Payment, BasicPayment } = require('../db/db');
 const { EventPayment } = require('../db/db');
+const { sendPaymentEmail } = require('./payment');
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
@@ -164,6 +165,11 @@ router.put('/update-payment-status', authenticateAdminJwt, async (req, res) => {
 
     if (!payment) {
       return res.status(404).json({ error: "Payment not found" });
+    }
+
+    // 📧 If changed to 'issued', automatically send the QR code pass email!
+    if (status === "issued" && payment.email && payment.uniqueId) {
+      sendPaymentEmail(payment.email, payment.name, payment.uniqueId);
     }
 
     return res.json({

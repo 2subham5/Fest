@@ -514,7 +514,7 @@ async function sendPaymentEmail(toEmail, firstname, uniqueId) {
     const mailOptions = {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
-      subject: "Payment Successful - Your Unique ID",
+      subject: "Congratulation, You got the Elite Pass!",
       html: `
         <p style="font-size: 15px; line-height: 1.6; color: #333;">
           Greetings from <strong>AIIMS Guwahati!</strong> 🌟
@@ -1098,3 +1098,4 @@ router.post("/send-whatsapp", async (req, res) => {
 });
 
 module.exports = router;
+module.exports.sendPaymentEmail = sendPaymentEmail;
