@@ -145,4 +145,35 @@ router.post('/basicexpire', authenticateAdminJwt, async (req, res) => {
     return res.status(500).json({ error: 'Server error' });
   }
 });
+
+// Admin update payment status for Elite Pass
+router.put('/update-payment-status', authenticateAdminJwt, async (req, res) => {
+  try {
+    const { paymentId, status } = req.body;
+
+    const allowedStatuses = ["initiated", "issued", "expired", "failed", "not_issued"];
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({ error: "Invalid status value" });
+    }
+
+    const payment = await Payment.findByIdAndUpdate(
+      paymentId,
+      { status },
+      { new: true }
+    );
+
+    if (!payment) {
+      return res.status(404).json({ error: "Payment not found" });
+    }
+
+    return res.json({
+      message: "Status updated successfully",
+      payment
+    });
+  } catch (err) {
+    console.error("Status update error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
 module.exports = router;
