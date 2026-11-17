@@ -13,6 +13,8 @@ const RegisterPage = () => {
   });
 
   const [selectedPass, setSelectedPass] = useState("normal"); // "normal" (₹499) or "fanpit" (₹1500)
+  const [vipSoldOut, setVipSoldOut] = useState(false);
+  const [vipRemaining, setVipRemaining] = useState(null);
   const amount = selectedPass === "fanpit" ? 1500 : 499;
 
   const [errors, setErrors] = useState({});
@@ -24,6 +26,24 @@ const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const paymentUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
+
+  // 🔍 Check VIP Pass availability on load
+  useEffect(() => {
+    const fetchVipStatus = async () => {
+      try {
+        const { data } = await axios.get("/payment/vip-status");
+        if (data?.soldOut) {
+          setVipSoldOut(true);
+          setSelectedPass("normal");
+        } else if (typeof data?.remaining === "number") {
+          setVipRemaining(data.remaining);
+        }
+      } catch (err) {
+        console.error("Failed to fetch VIP status:", err);
+      }
+    };
+    fetchVipStatus();
+  }, []);
 
   // ✅ Check PayU redirect result
   useEffect(() => {
@@ -163,6 +183,11 @@ const RegisterPage = () => {
         err.response?.data?.message || "Something went wrong. Please try again.";
       setErrorMessage(errorMsg);
 
+      if (err.response?.status === 400 && errorMsg.toLowerCase().includes("sold out")) {
+        setVipSoldOut(true);
+        setSelectedPass("normal");
+      }
+
       setPaymentSuccess(false);
       setPaymentFailed(true);
       setUniqueId("");
@@ -261,27 +286,46 @@ const RegisterPage = () => {
 
                     {/* FanPit Pass */}
                     <div
-                      onClick={() => setSelectedPass("fanpit")}
-                      className={`cursor-pointer p-4 rounded-xl border relative transition-all duration-200 select-none ${selectedPass === "fanpit"
-                        ? "bg-amber-900/40 border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.35)] ring-1 ring-amber-400"
-                        : "bg-gray-700/40 border-gray-600 hover:border-gray-500"
+                      onClick={() => {
+                        if (!vipSoldOut) setSelectedPass("fanpit");
+                      }}
+                      className={`p-4 rounded-xl border relative transition-all duration-200 select-none ${vipSoldOut
+                        ? "bg-gray-800/40 border-gray-700 opacity-60 cursor-not-allowed"
+                        : selectedPass === "fanpit"
+                          ? "cursor-pointer bg-amber-900/40 border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.35)] ring-1 ring-amber-400"
+                          : "cursor-pointer bg-gray-700/40 border-gray-600 hover:border-gray-500"
                         }`}
                     >
-                      <span className="absolute -top-2.5 right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
-                        VIP Access
-                      </span>
+                      {vipSoldOut ? (
+                        <span className="absolute -top-2.5 right-3 bg-red-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
+                          Sold Out
+                        </span>
+                      ) : (
+                        <span className="absolute -top-2.5 right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
+                          VIP Access {vipRemaining !== null && vipRemaining <= 15 ? `(${vipRemaining} left)` : ""}
+                        </span>
+                      )}
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-semibold text-white text-base">FanPit</span>
+                        <span className={`font-semibold text-base ${vipSoldOut ? "text-gray-400 line-through" : "text-white"}`}>
+                          FanPit
+                        </span>
                         <input
                           type="radio"
                           name="passTier"
+                          disabled={vipSoldOut}
                           checked={selectedPass === "fanpit"}
-                          onChange={() => setSelectedPass("fanpit")}
-                          className="accent-amber-500 w-4 h-4 cursor-pointer"
+                          onChange={() => {
+                            if (!vipSoldOut) setSelectedPass("fanpit");
+                          }}
+                          className="accent-amber-500 w-4 h-4 cursor-pointer disabled:cursor-not-allowed"
                         />
                       </div>
-                      <div className="text-2xl font-bold text-amber-400">₹1500</div>
-                      <p className="text-xs text-gray-400 mt-1">FanPit VIP zone for Star Night</p>
+                      <div className={`text-2xl font-bold ${vipSoldOut ? "text-gray-500" : "text-amber-400"}`}>
+                        ₹1500
+                      </div>
+                      <p className="text-xs text-gray-400 mt-1">
+                        {vipSoldOut ? "All 50 VIP passes have been booked" : "FanPit VIP zone for Star Night"}
+                      </p>
                     </div>
                   </div>
                 </div>

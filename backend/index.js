@@ -13,12 +13,12 @@ dotenv.config();
 const allowedOrigins = [
     'https://eternia.it.com',
     'https://www.eternia.it.com',
-    'http://eternia.it.com',
-    'http://www.eternia.it.com',
     'https://secure.payu.in',
     'https://test.payu.in',
     'http://localhost:3000',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'http://eternia.it.com',
+    'http://www.eternia.it.com'
 ];
 
 

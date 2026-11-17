@@ -101,6 +101,22 @@ const PAYU_MERCHANT_SALT = process.env.PAYU_MERCHANT_SALT;
 
 const PAYU_BASE_URL = process.env.PAYU_BASE_URL || "https://test.payu.in"; // test
 
+// ✅ Public endpoint to check VIP FanPit pass availability
+router.get('/vip-status', async (req, res) => {
+  try {
+    const limit = 1;
+    const count = await Payment.countDocuments({ amount: 1500, status: "issued" });
+    return res.json({
+      soldOut: count >= limit,
+      remaining: Math.max(0, limit - count),
+      totalIssued: count,
+      limit
+    });
+  } catch (err) {
+    console.error("Error fetching VIP pass status:", err);
+    return res.status(500).json({ error: "Failed to fetch pass availability" });
+  }
+});
 
 router.post('/pay', async (req, res) => {
   try {
@@ -121,6 +137,22 @@ router.post('/pay', async (req, res) => {
 
     const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
     const amountINR = Number(amount) === 1500 ? 1500 : 499;
+
+    // 🔒 Enforce 50 pass limit for VIP FanPit passes
+    if (amountINR === 1500) {
+      const MAX_VIP_PASSES = 1;
+      const vipIssuedCount = await Payment.countDocuments({
+        amount: 1500,
+        status: "issued"
+      });
+
+      if (vipIssuedCount >= MAX_VIP_PASSES) {
+        return res
+          .status(400)
+          .json(new Response(400, "VIP FanPit passes are sold out! Please select the Standard Pass.", false));
+      }
+    }
+
     const productinfo = amountINR === 1500 ? "Eternia Pass (FanPit)" : "Eternia Pass";
 
     // ✅ Correct PayU test hash formula (single hash)
