@@ -169,7 +169,7 @@ router.put('/update-payment-status', authenticateAdminJwt, async (req, res) => {
 
     // 📧 If changed to 'issued', automatically send the QR code pass email!
     if (status === "issued" && payment.email && payment.uniqueId) {
-      sendPaymentEmail(payment.email, payment.name, payment.uniqueId);
+      sendPaymentEmail(payment.email, payment.name, payment.uniqueId, payment.amount);
     }
 
     return res.json({

@@ -12,6 +12,9 @@ const RegisterPage = () => {
     contact: ""
   });
 
+  const [selectedPass, setSelectedPass] = useState("normal"); // "normal" (₹499) or "fanpit" (₹1500)
+  const amount = selectedPass === "fanpit" ? 1500 : 499;
+
   const [errors, setErrors] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [uniqueId, setUniqueId] = useState("");
@@ -132,7 +135,8 @@ const RegisterPage = () => {
       const { data } = await axios.post("/payment/pay", {
         name: formData.name,
         email: formData.email,
-        contact: formData.contact
+        contact: formData.contact,
+        amount: amount,
       });
 
       const { payuUrl, payuData } = data.data;
@@ -227,6 +231,61 @@ const RegisterPage = () => {
                   </div>
                 )}
 
+                {/* Pass Type Selection */}
+                <div>
+                  <label className="block text-gray-300 text-sm font-medium mb-3">
+                    Select Pass Type *
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {/* Normal Pass */}
+                    <div
+                      onClick={() => setSelectedPass("normal")}
+                      className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 select-none ${selectedPass === "normal"
+                        ? "bg-purple-900/40 border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.35)] ring-1 ring-purple-400"
+                        : "bg-gray-700/40 border-gray-600 hover:border-gray-500"
+                        }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold text-white text-base">Standard Pass</span>
+                        <input
+                          type="radio"
+                          name="passTier"
+                          checked={selectedPass === "normal"}
+                          onChange={() => setSelectedPass("normal")}
+                          className="accent-purple-500 w-4 h-4 cursor-pointer"
+                        />
+                      </div>
+                      <div className="text-2xl font-bold text-purple-400">₹499</div>
+                      <p className="text-xs text-gray-400 mt-1">General festival & concert access</p>
+                    </div>
+
+                    {/* FanPit Pass */}
+                    <div
+                      onClick={() => setSelectedPass("fanpit")}
+                      className={`cursor-pointer p-4 rounded-xl border relative transition-all duration-200 select-none ${selectedPass === "fanpit"
+                        ? "bg-amber-900/40 border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.35)] ring-1 ring-amber-400"
+                        : "bg-gray-700/40 border-gray-600 hover:border-gray-500"
+                        }`}
+                    >
+                      <span className="absolute -top-2.5 right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
+                        VIP Access
+                      </span>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold text-white text-base">FanPit</span>
+                        <input
+                          type="radio"
+                          name="passTier"
+                          checked={selectedPass === "fanpit"}
+                          onChange={() => setSelectedPass("fanpit")}
+                          className="accent-amber-500 w-4 h-4 cursor-pointer"
+                        />
+                      </div>
+                      <div className="text-2xl font-bold text-amber-400">₹1500</div>
+                      <p className="text-xs text-gray-400 mt-1">FanPit VIP zone for Star Night</p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Name */}
                 <div>
                   <label className="block text-gray-300 text-sm font-medium mb-2">
@@ -304,7 +363,10 @@ const RegisterPage = () => {
                 <button
                   onClick={handlePayment}
                   disabled={isProcessing}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25 transform hover:scale-[1.02] active:scale-[0.98]"
+                  className={`w-full py-4 text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 ${selectedPass === "fanpit"
+                    ? "bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 shadow-amber-500/25"
+                    : "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-purple-500/25"
+                    }`}
                 >
                   {isProcessing ? (
                     <div className="flex items-center justify-center">
@@ -312,7 +374,7 @@ const RegisterPage = () => {
                       Processing...
                     </div>
                   ) : (
-                    "Register & Pay ₹500"
+                    `Register & Pay ₹${amount}`
                   )}
                 </button>
               </div>

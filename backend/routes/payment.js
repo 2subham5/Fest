@@ -30,6 +30,7 @@ const paymentValidationSchema = z.object({
     .trim()
     .min(1, "Contact number is required")
     .regex(/^\d{10}$/, "Contact number must be 10 digits"),
+  amount: z.number().optional(),
 });
 const sportPaymentValidationSchema = z
   .object({
@@ -103,7 +104,7 @@ const PAYU_BASE_URL = process.env.PAYU_BASE_URL || "https://test.payu.in"; // te
 
 router.post('/pay', async (req, res) => {
   try {
-    const { name, email, contact } = paymentValidationSchema.parse(req.body);
+    const { name, email, contact, amount } = paymentValidationSchema.parse(req.body);
 
     // Optional: prevent duplicate initiated/expired payments
     const existingIssuedPayment = await Payment.findOne({
@@ -119,8 +120,8 @@ router.post('/pay', async (req, res) => {
 
 
     const txnid = uuidv4().replace(/-/g, '').slice(0, 20);
-    const productinfo = "Eternia Pass";
-    const amountINR = 499;
+    const amountINR = Number(amount) === 1500 ? 1500 : 499;
+    const productinfo = amountINR === 1500 ? "Eternia Pass (FanPit)" : "Eternia Pass";
 
     // ✅ Correct PayU test hash formula (single hash)
     const hashString = `${PAYU_MERCHANT_KEY}|${txnid}|${amountINR}|${productinfo}|${name}|${email}|||||||||||${PAYU_MERCHANT_SALT}`;
@@ -490,10 +491,13 @@ router.post("/sportspay", async (req, res) => {
 //     console.error("Error sending payment email:", err);
 //   }
 // }
-async function sendPaymentEmail(toEmail, firstname, uniqueId) {
+async function sendPaymentEmail(toEmail, firstname, uniqueId, amount) {
   try {
     if (!uniqueId) throw new Error("Unique ID is missing");
-
+    const isFanPit = Number(amount) === 1500;
+    const passTitle = isFanPit
+      ? "Elite Pass (FanPit VIP) ⭐"
+      : "Elite Pass";
     const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
 
     // Generate QR code as a buffer
@@ -514,20 +518,17 @@ async function sendPaymentEmail(toEmail, firstname, uniqueId) {
     const mailOptions = {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
-      subject: "Congratulation, You got the Elite Pass!",
+      subject: isFanPit
+        ? "Congratulations! You got the Elite Pass (FanPit)! 🎉"
+        : "Congratulations, You got the Elite Pass!",
       html: `
-        <p style="font-size: 15px; line-height: 1.6; color: #333;">
-          Greetings from <strong>AIIMS Guwahati!</strong> 🌟
-        </p>
-       <h3>Congratulations! ${firstname} You have received the Elite Pass!</h3>
-        <h3>Payment Successful!</h3>
-        <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
-         <h3 style="color: #004aad; font-size: 17px; margin-bottom: 8px;">📞 Contact Us</h3>
-        <p style="font-size: 15px; line-height: 1.6;">
-          📧 Email: <a href="mailto:techeternia25@gmail.com" style="color: #004aad; text-decoration: none;">techeternia25@gmail.com</a><br>
-          📞 Phone: <a href="tel:9875379386" style="color: #004aad; text-decoration: none;">9875379386</a>,
-          
-        </p>
+    <p style="font-size: 15px; line-height: 1.6; color: #333;">
+      Greetings from <strong>AIIMS Guwahati!</strong> 🌟
+    </p>
+    <h3>Congratulations ${firstname}! You have received the ${passTitle}!</h3>
+    <p><strong>Pass Type:</strong> ${isFanPit ? "FanPit VIP (₹1500)" : "General Access (₹499)"}</p>
+    <p>Your Unique ID is: <strong>${uniqueId}</strong></p>
+      <p><img src="cid:qrcode" alt="QR Code" width="200" height="200" /></p>
       `,
       attachments: [
         {
@@ -949,7 +950,7 @@ router.post("/verifyPayment", async (req, res) => {
         { status: "issued", payuPaymentId: mihpayid },
         { new: true }
       );
-      sendPaymentEmail(email, firstname, txnid);
+      sendPaymentEmail(email, firstname, txnid, amount);
       // ✅ Redirect with success params
       redirectUrl += `?success=true&uniqueId=${txnid}&email=${encodeURIComponent(email)}`;
     } else {

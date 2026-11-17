@@ -63,6 +63,21 @@ const PaymentTable = () => {
     { name: "Name", selector: row => row.name, sortable: true },
     { name: "Email", selector: row => row.email, sortable: true },
     {
+      name: "Pass Type",
+      selector: row => row.amount || 499,
+      sortable: true,
+      cell: row => (
+        <span
+          className={`px-2 py-1 rounded text-xs font-semibold ${row.amount === 1500
+              ? "bg-amber-900/50 text-amber-300 border border-amber-500/50"
+              : "bg-purple-900/50 text-purple-300 border border-purple-500/50"
+            }`}
+        >
+          {row.amount === 1500 ? "VIP FanPit (₹1500)" : `Standard (₹${row.amount || 499})`}
+        </span>
+      ),
+    },
+    {
       name: "Status",
       selector: row => row.status,
       sortable: true,
@@ -72,15 +87,14 @@ const PaymentTable = () => {
         if (!isAdmin) {
           return (
             <span
-              className={`px-2 py-1 rounded-full text-white font-semibold ${
-                row.status === "issued"
+              className={`px-2 py-1 rounded-full text-white font-semibold ${row.status === "issued"
                   ? "bg-green-500"
                   : row.status === "initiated"
-                  ? "bg-yellow-500"
-                  : row.status === "expired"
-                  ? "bg-red-500"
-                  : "bg-gray-500"
-              }`}
+                    ? "bg-yellow-500"
+                    : row.status === "expired"
+                      ? "bg-red-500"
+                      : "bg-gray-500"
+                }`}
             >
               {row.status}
             </span>
@@ -91,15 +105,14 @@ const PaymentTable = () => {
           <select
             value={row.status}
             onChange={(e) => handleStatusChange(row._id, e.target.value)}
-            className={`px-2.5 py-1 rounded-md text-xs font-bold cursor-pointer border border-gray-600 focus:outline-none transition-colors ${
-              row.status === "issued"
+            className={`px-2.5 py-1 rounded-md text-xs font-bold cursor-pointer border border-gray-600 focus:outline-none transition-colors ${row.status === "issued"
                 ? "bg-green-600 text-white"
                 : row.status === "initiated"
-                ? "bg-yellow-500 text-black"
-                : row.status === "expired"
-                ? "bg-red-600 text-white"
-                : "bg-gray-600 text-white"
-            }`}
+                  ? "bg-yellow-500 text-black"
+                  : row.status === "expired"
+                    ? "bg-red-600 text-white"
+                    : "bg-gray-600 text-white"
+              }`}
           >
             <option value="initiated" className="bg-gray-800 text-white">Initiated</option>
             <option value="issued" className="bg-gray-800 text-white">Issued</option>

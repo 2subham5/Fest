@@ -1,3 +1,24 @@
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+// Fix for macOS / ISP DNS failure on MongoDB Atlas SRV & host resolution
+const origLookup = dns.lookup;
+dns.lookup = (hostname, options, callback) => {
+  if (typeof options === "function") {
+    callback = options;
+    options = {};
+  }
+  dns.resolve4(hostname, (err, addresses) => {
+    if (!err && addresses && addresses.length > 0) {
+      if (options && options.all) {
+        return callback(null, addresses.map((a) => ({ address: a, family: 4 })));
+      }
+      return callback(null, addresses[0], 4);
+    }
+    origLookup(hostname, options, callback);
+  });
+};
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -8,6 +29,7 @@ const data = [
     "categoryName": "Sports",
     "subcategories": [
       { "name": "Volleyball (Boys)", "isPaid": true, "paymentAmount": 1600, "gender": "male", "unit": "per team", "team": true },
+      { "name": "Kabaddi (Girls)", "isPaid": true, "paymentAmount": 799, "gender": "female", "unit": "per team", "team": true },
       { "name": "Volleyball (Girls)", "isPaid": true, "paymentAmount": 800, "gender": "female", "unit": "per team", "team": true },
       { "name": "Cricket", "isPaid": true, "paymentAmount": 2000, "gender": "male", "unit": "per team", "team": true },
       { "name": "Football (Boys)", "isPaid": true, "paymentAmount": 2000, "gender": "male", "unit": "per team", "team": true },
@@ -43,6 +65,20 @@ const data = [
         "name": "Beg Borrow Steal",
         "isPaid": true,
         "paymentAmount": 200,
+        "unit": "per team",
+        "team": true
+      },
+      {
+        "name": "Match The Cans",
+        "isPaid": true,
+        "paymentAmount": 30,
+        "unit": "per person",
+        "team": false
+      },
+      {
+        "name": "Tug Of War",
+        "isPaid": true,
+        "paymentAmount": 300,
         "unit": "per team",
         "team": true
       },
@@ -381,11 +417,7 @@ const data = [
 
 // ✅ Connect and replace existing categories
 mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    family: 4,
-  })
+  .connect(process.env.MONGODB_URL)
   .then(async () => {
     console.log("✅ MongoDB connected successfully");
 
