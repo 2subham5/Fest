@@ -63,6 +63,23 @@ const PaymentTable = () => {
     { name: "Name", selector: row => row.name, sortable: true },
     { name: "Email", selector: row => row.email, sortable: true },
     {
+      name: "Contact",
+      selector: row => row.contact || "N/A",
+      sortable: true,
+      cell: row => (
+        row.contact ? (
+          <a
+            href={`tel:${row.contact}`}
+            className="text-blue-400 hover:text-blue-300 hover:underline"
+          >
+            {row.contact}
+          </a>
+        ) : (
+          <span className="text-gray-500">N/A</span>
+        )
+      ),
+    },
+    {
       name: "Pass Type",
       selector: row => row.amount || 499,
       sortable: true,
