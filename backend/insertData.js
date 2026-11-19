@@ -346,10 +346,10 @@ const data = [
       { "name": "Rhythmixia: Solo Classical", "isPaid": false, "unit": "per person", "team": false },
       { "name": "Rhythmixia: Duo Classical", "isPaid": false, "unit": "per team", "team": true },
 
-      // S.No. 3 — Twilight Masquerade (Drama Competition) [Early-Bird: ₹699]
+      // S.No. 3 — Twilight Masquerade (Drama Competition) 
       { "name": "Twilight Masquerade (Drama Competition)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
 
-      // S.No. 4 — Sonic Mayhem (Battle of Bands) [Early-Bird: ₹499]
+      // S.No. 4 — Sonic Mayhem (Battle of Bands) 
       { "name": "Sonic Mayhem (Battle of Bands)", "isPaid": true, "paymentAmount": 499, "unit": "per team", "team": true },
 
       // S.No. 5 — Sonority (Singing Competition) [FREE]
@@ -359,7 +359,8 @@ const data = [
       { "name": "Sonority: Swar-Samvaad (Classical Duet)", "isPaid": false, "unit": "per team", "team": true },
 
       // S.No. 6 — Cosmos - Isekai- IRL (Cosplay) [Early-Bird: ₹99]
-      { "name": "Cosmos - Isekai- IRL (Cosplay)", "isPaid": true, "paymentAmount": 99, "unit": "per person", "team": false },
+      { "name": "Cosmos - Isekai- IRL (Cosplay)", "isPaid": true, "paymentAmount": 149, "unit": "per person", "team": false },
+      { "name": "Cosmos - Duo", "isPaid": true, "paymentAmount": 199, "unit": "per team", "team": true },
       // S.No. 7 — Fashionista (Fashion Competition) [Early-Bird: ₹799]
       { "name": "Fashionista", "isPaid": true, "paymentAmount": 799, "unit": "per team", "team": true }
     ]

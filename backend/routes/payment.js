@@ -653,6 +653,7 @@ function getRegistrationForm(eventName, teamName) {
     "syncopation: astral troupe (group)": "https://forms.gle/oUWqE16FRdXBPd4U7",
     // cosmos
     "cosmos - isekai- irl (cosplay)": "https://docs.google.com/forms/d/1etHEy3ZZEfyZc4JQL44S-alQfKLdLduCpwjxapV_QMg/viewform?usp=sf_link",
+    "cosmos - duo": "https://docs.google.com/forms/d/1etHEy3ZZEfyZc4JQL44S-alQfKLdLduCpwjxapV_QMg/viewform?usp=sf_link",
     "twilight masquerade (drama competition)": "https://docs.google.com/forms/d/e/1FAIpQLSc-nknr8NXzNncRcYtIlWfGFCCUcJIytXZZ6VPWsVZBqCIOcQ/viewform?usp=preview",
     "sonic mayhem (battle of bands)": "https://forms.gle/EdoWEmnVpPyBHxjU6",
     "fashionista": "https://forms.gle/23xTMCbgsCN29HLe9",
