@@ -528,8 +528,8 @@ async function sendPaymentEmail(toEmail, firstname, uniqueId, amount) {
     if (!uniqueId) throw new Error("Unique ID is missing");
     const isFanPit = Number(amount) === 1500;
     const passTitle = isFanPit
-      ? "Elite Pass (FanPit VIP) ⭐"
-      : "Elite Pass";
+      ? "Delegate Pass (FanPit VIP) ⭐"
+      : "Delegate Pass";
     const qrUrl = `https://eternia.it.com/expire?uniqueId=${uniqueId}`;
 
     // Generate QR code as a buffer
@@ -551,8 +551,8 @@ async function sendPaymentEmail(toEmail, firstname, uniqueId, amount) {
       from: `"Event Team" <${process.env.EMAIL_USER}>`,
       to: toEmail,
       subject: isFanPit
-        ? "Congratulations! You got the Elite Pass (FanPit)! 🎉"
-        : "Congratulations, You got the Elite Pass!",
+        ? "Congratulations! You got the Delegate Pass (FanPit)! 🎉"
+        : "Congratulations, You got the Delegate Pass!",
       html: `
     <p style="font-size: 15px; line-height: 1.6; color: #333;">
       Greetings from <strong>AIIMS Guwahati!</strong> 🌟

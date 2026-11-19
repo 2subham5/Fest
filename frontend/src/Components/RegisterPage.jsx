@@ -202,7 +202,7 @@ const RegisterPage = () => {
       <div className="relative z-10 w-full max-w-lg mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-            Unlock Elite Pass
+            Unlock Delegate Pass
           </h1>
           <p className="text-gray-300 text-lg">Register for ETERNIA 2026</p>
         </div>
@@ -321,7 +321,7 @@ const RegisterPage = () => {
                         />
                       </div>
                       <div className={`text-2xl font-bold ${vipSoldOut ? "text-gray-500" : "text-amber-400"}`}>
-                        ₹1500
+                        ₹2000
                       </div>
                       <p className="text-xs text-gray-400 mt-1">
                         {vipSoldOut ? "All 50 VIP passes have been booked" : "FanPit VIP zone for Star Night"}

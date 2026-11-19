@@ -112,13 +112,13 @@ const data = [
         "unit": "per team",
         "team": true
       },
-      {
-        "name": "Treasure Hunt",
-        "isPaid": true,
-        "paymentAmount": 200,
-        "unit": "per team",
-        "team": true
-      },
+      // {
+      //   "name": "Treasure Hunt",
+      //   "isPaid": true,
+      //   "paymentAmount": 200,
+      //   "unit": "per team",
+      //   "team": true
+      // },
       {
         "name": "You Laugh You Lose",
         "isPaid": true,
